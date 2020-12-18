@@ -1,10 +1,6 @@
-
+import FormDefault from "./Container/FormDefault/index";
 function App() {
-  return (
-    <div className="App">
-      
-    </div>
-  );
+  return <FormDefault />;
 }
 
 export default App;

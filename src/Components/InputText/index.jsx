@@ -1,12 +1,14 @@
-import { TextField } from '@material-ui/core';
 import React from 'react';
+import TextField from '@material-ui/core/TextField';
 
-export default function InputText({ placeholder, type }) {
+export default function InputText({ variant, type, placeholder }) {
     return (
-        <TextField 
-        id="outlined-basic" 
-        label="Outlined" 
-        variant={placeholder} 
-        type={type} />
+        <TextField
+            id="outlined-basic"
+            label={placeholder}
+            variant={variant}
+            type={type}
+
+            />
     )
 }
