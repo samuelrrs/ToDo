@@ -1,6 +1,6 @@
 # ToDo
 
-Lista de tarefas pode
+Liste suas tarefas, definindo uma data, marque se é importante ou não, e as exclua quando quiser.
 
 
 ## 🚀 Começando
