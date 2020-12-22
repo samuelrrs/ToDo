@@ -1,21 +1,23 @@
 import React from 'react';
-import { Button } from '@material-ui/core';
-import useStyles from './styles';
+import Button from '@material-ui/core/Button';
+import useStyles from './../ButtonDefault/styles';
 
-export default function ButtonDefault({ buttonContent, type, onClick }) {
+export default function ButtonDefault({ color, type, children, onClick }) {
 
     const styles = useStyles()
 
     return (
+        <>
 
-        <Button
-            variant="contained"
-            color="secondary"
-            type={type}
-            onClick={onClick}
-            className={styles.button}
+            <Button className={styles.button}
+                variant="contained"
+                color={color}
+                type={type}
+                onClick={onClick}
             >
-            {buttonContent}
-        </Button>
-    )
+                {children}
+            </Button>
+
+        </>
+    );
 }
