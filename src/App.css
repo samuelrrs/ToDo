@@ -59,7 +59,7 @@ h1 {
   border-radius: 0 4px 4px 0;
   cursor: pointer;
   outline: none;
- background: #839BB7;
+  background: #839bb7;
   color: #fff;
   text-transform: capitalize;
 }
@@ -69,7 +69,7 @@ h1 {
 }
 
 .todo-button.edit {
-  background: #839BB7;
+  background: #839bb7;
   padding: 16px 22px;
 }
 
@@ -85,7 +85,7 @@ h1 {
   align-items: center;
   margin: 4px auto;
   color: #fff;
-  background: #839BB7;
+  background: #839bb7;
 
   padding: 16px;
   border-radius: 5px;
@@ -93,15 +93,15 @@ h1 {
 }
 
 .todo-row:nth-child(4n + 1) {
-  background: #839BB7
+  background: #839bb7;
 }
 
 .todo-row:nth-child(4n + 2) {
-background: #839BB7
+  background: #839bb7;
 }
 
 .todo-row:nth-child(4n + 3) {
- background: #839BB7
+  background: #839bb7;
 }
 
 .icons {

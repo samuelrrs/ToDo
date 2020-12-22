@@ -1,10 +1,11 @@
 import './App.css'
-import TodoList from './components/TodoList';
+import ContainerPrincipal from './containers/ContainerPrincipal/index';
+import { Container } from '@material-ui/core';
 function App() {
   return (
-    <div className="todo-app">
-      <TodoList/> 
-    </div>
+    <Container>
+      <ContainerPrincipal/> 
+    </Container>
   );
 }
 
