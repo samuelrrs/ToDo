@@ -1,9 +1,10 @@
-import FormDefault from "./Container/FormDefault/index";
+import TodoList from "./components/TodoList";
+import './App.css'
 function App() {
   return (
-    <>
-      <FormDefault />
-    </>
+    <div className="todo-app">
+      <TodoList />
+    </div>
   );
 }
 
