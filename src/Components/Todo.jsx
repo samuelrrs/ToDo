@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import TodoForm from './TodoForm';
 import CloseIcon from '@material-ui/icons/Close';
-import EditIcon from '@material-ui/icons/Edit';
+/* import EditIcon from '@material-ui/icons/Edit'; */
 function Todo({ todos, completeTodo, removeTodo, updateTodo  }) {
     const [edit, setEdit] = useState({
         id: null,
@@ -35,11 +35,11 @@ function Todo({ todos, completeTodo, removeTodo, updateTodo  }) {
                         onClick={() => removeTodo(todo.id)}
                         className='delete-icon'
                     />
-
+{/* 
                     <EditIcon
                         onClick={() => setEdit({id: todo.id, value: todo.text})}
                         className='edit-icon'
-                    />
+                    /> */}
                 </div>
             </div>
         ))
