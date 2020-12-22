@@ -52,7 +52,6 @@ function TodoForm(props) {
                             onChange={handleChange}
                             name='text'
                             className='todo-input'
-                            ref={inputRef}
                         />
                         <ButtonDefault
                             color={'primary'}
