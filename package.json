@@ -1,6 +1,7 @@
 {
   "name": "todo",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "description": "listar todos",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.2",
