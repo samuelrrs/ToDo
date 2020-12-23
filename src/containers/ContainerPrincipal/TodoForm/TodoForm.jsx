@@ -1,4 +1,4 @@
-import React, { useState, /* useRef */ } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import InputText from '../../../components/InputText/index';
 import ButtonDefault from './../../../components/ButtonDefault/index';
@@ -9,14 +9,13 @@ function TodoForm(props) {
 
 
     const [input, setInput] = useState('')
-    const [desc, setDesc] = useState('')
-    const [date, setDate] = useState('')
+  /*   const [desc, setDesc] = useState('')
+    const [date, setDate] = useState('') */
+    const inputRef = useRef(null) 
 
-    /* const inputRef = useRef(null) */
-
-    /*   useEffect(() => {
+       useEffect(() => {
           inputRef.current.focus()
-      }) */
+      }) 
     function handleChange(e) {
         setInput(e.target.value)        
     }
@@ -42,6 +41,7 @@ function TodoForm(props) {
                         onChange={handleChange}
                         name='text'
                         className='todo-input edit'
+                        
                     />
                     <ButtonDefault onClick={handleSubmit} className='todo-button edit'>
                         Update
@@ -55,13 +55,14 @@ function TodoForm(props) {
                             onChange={handleChange}
                             name='text'
                             className='todo-input'
+                            inputRef={inputRef}
                         />
                         <InputText
                             label='Digite a descrição'
-                            value={desc}
+                           /*  value={desc} */
                         />
                         <InputText
-                            value={date}
+                            /* value={date} */
                             type="date"
 
                         />
