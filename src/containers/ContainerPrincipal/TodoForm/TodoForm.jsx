@@ -8,7 +8,7 @@ import InputText from './../../../Components/InputText/index';
 function TodoForm(props) {
 
 
-    const [input, setInput] = useState('')
+    const [input, setInput] = useState(props.edit ? props.edit.value : '')
     /*   const [desc, setDesc] = useState('')
       const [date, setDate] = useState('') */
     const inputRef = useRef(null)
@@ -41,6 +41,8 @@ function TodoForm(props) {
                         onChange={handleChange}
                         name='text'
                         className='todo-input edit'
+                        inputRef={inputRef}
+
 
                     />
                     <ButtonDefault onClick={handleSubmit} className='todo-button edit'>
