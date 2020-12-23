@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import useStyles from './styles';
 
 
-export default function InputText({ label, value, onChange, type }) {
+export default function InputText({ label, value, onChange, type, inputRef, row }) {
 
     const styles = useStyles()
     return (
@@ -17,6 +17,10 @@ export default function InputText({ label, value, onChange, type }) {
                 value={value}
                 onChange={onChange}
                 required={true}
+                inputRef={inputRef}
+                row={row}
+                multiline={false}
+
             />
         </>
     )
