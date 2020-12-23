@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react'
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import InputText from '../../../components/InputText/index';
-import ButtonDefault from './../../../components/ButtonDefault/index';
 import { Container } from '@material-ui/core';
 import useStyles from './styles';
+import ButtonDefault from './../../../components/ButtonDefault/index';
 
 function TodoForm(props) {
 
