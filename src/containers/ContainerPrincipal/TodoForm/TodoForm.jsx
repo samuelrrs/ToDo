@@ -9,15 +9,18 @@ function TodoForm(props) {
 
 
     const [input, setInput] = useState(props.edit ? props.edit.value : '')
-    /*   const [desc, setDesc] = useState('')
-      const [date, setDate] = useState('') */
-    const inputRef = useRef(null)
-
-    useEffect(() => {
+    const [desc, setDesc] = useState('')
+    const [date, setDate] = useState('')
+   /*  const inputRef = useRef(null)
+ */
+   /*  useEffect(() => {
         inputRef.current.focus()
-    })
+    }) */
     function handleChange(e) {
         setInput(e.target.value)
+    }
+    function handleChangeDesc(e) {
+        setDesc(e.target.value)
     }
 
     function handleSubmit(e) {
@@ -41,9 +44,7 @@ function TodoForm(props) {
                         onChange={handleChange}
                         name='text'
                         className='todo-input edit'
-                        inputRef={inputRef}
-
-
+                       /*  inputRef={inputRef} */
                     />
                     <ButtonDefault onClick={handleSubmit} className='todo-button edit'>
                         Update
@@ -52,22 +53,23 @@ function TodoForm(props) {
             ) : (
                     <Container className={styles.form}>
                         <InputText
-                            label='Digite sua tarefa...'
+                            label='Digite sua descrição...'
                             value={input}
                             onChange={handleChange}
                             name='text'
                             className='todo-input'
-                            inputRef={inputRef}
-                        />
-                      {/*   <InputText
-                            label='Digite a descrição'
-                            value={desc}
+                           /*  inputRef={inputRef} */
                         />
                         <InputText
+                            label='Digite a descrição'
+                            value={desc}
+                            onChange={handleChangeDesc}
+                        />
+                           <InputText
                             value={date}
                             type="date"
 
-                        /> */}
+                        /> 
                         <ButtonDefault
                             color={'primary'}
                             type={'submit'}
@@ -75,10 +77,6 @@ function TodoForm(props) {
                             className={styles.button} >
                             <AddBoxIcon />
                         </ButtonDefault>
-
-
-
-
 
                     </Container>
                 )}
