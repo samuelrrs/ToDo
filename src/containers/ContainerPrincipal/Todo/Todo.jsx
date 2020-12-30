@@ -26,24 +26,27 @@ function Todo({ todos, completeTodo, removeTodo, updateTodo }) {
     }
 
     return (
-        todos.map((todo, index) => (
-            <Container className={styles.lista}
-               
-                key={index}
-            >
-                <Container key={todo.id} onClick={() => completeTodo(todo.id)}>
-                    {todo.text}
-                </Container>
-                <Container className="icons">
-                    <CloseIcon
-                        onClick={() => removeTodo(todo.id)}
-                        className='delete-icon'
-                    />
 
-                    <EditIcon
-                        onClick={() => setEdit({ id: todo.id, value: todo.text })}
-                        className='edit-icon'
-                    />
+        todos.map((todo, index) => (
+            <Container className={styles.listaBody}>
+                <Container className={styles.lista}
+
+                    key={index}
+                >
+                    <Container key={todo.id} onClick={() => completeTodo(todo.id)}>
+                        {todo.text}
+                    </Container>
+                    <Container className="icons">
+                        <CloseIcon
+                            onClick={() => removeTodo(todo.id)}
+                            className='delete-icon'
+                        />
+
+                        <EditIcon
+                            onClick={() => setEdit({ id: todo.id, value: todo.text })}
+                            className='edit-icon'
+                        />
+                    </Container>
                 </Container>
             </Container>
         ))
