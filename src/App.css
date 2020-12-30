@@ -2,7 +2,9 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande";
+  color: gray
+
     "Lucida Sans", Arial, sans-serif;
 }
 
@@ -11,6 +13,8 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  color: gray
+
 }
 .todo-app {
   display: flex;
