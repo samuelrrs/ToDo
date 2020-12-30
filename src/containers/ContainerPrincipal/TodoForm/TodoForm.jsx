@@ -4,13 +4,18 @@ import { Container } from '@material-ui/core';
 import useStyles from './styles';
 import ButtonDefault from './../../../Components/ButtonDefault/index';
 import InputText from './../../../Components/InputText/index';
+import { FormControlLabel } from '@material-ui/core';
+import Switch from '@material-ui/core/Switch';
+
 
 function TodoForm(props) {
 
 
     const [input, setInput] = useState(props.edit ? props.edit.value : '')
-    const [desc, setDesc] = useState('')
-    const [date, setDate] = useState('')
+   /*  const [desc, setDesc] = useState('')
+    const [date, setDate] = useState('') */
+
+
    /*  const inputRef = useRef(null)
  */
    /*  useEffect(() => {
@@ -19,9 +24,9 @@ function TodoForm(props) {
     function handleChange(e) {
         setInput(e.target.value)
     }
-    function handleChangeDesc(e) {
+  /*   function handleChangeDesc(e) {
         setDesc(e.target.value)
-    }
+    } */
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -32,6 +37,17 @@ function TodoForm(props) {
         })
         setInput('')
     }
+
+
+
+    const [state, setState] = React.useState({
+        checkedA: true,
+        checkedB: true,
+    });
+
+    const switchChange = (event) => {
+        setState({ ...state, [event.target.name]: event.target.checked });
+    };
     const styles = useStyles()
 
     return (
@@ -60,7 +76,7 @@ function TodoForm(props) {
                             className='todo-input'
                            /*  inputRef={inputRef} */
                         />
-                        <InputText
+                        {/* <InputText
                             label='Digite a descrição'
                             value={desc}
                             onChange={handleChangeDesc}
@@ -69,7 +85,11 @@ function TodoForm(props) {
                             value={date}
                             type="date"
 
-                        /> 
+                        />  */}
+                        <FormControlLabel
+                            control={<Switch checked={state.checkedA} onChange={switchChange} name="checkedA" />}
+                            label="Importante"
+                        />
                         <ButtonDefault
                             color={'primary'}
                             type={'submit'}
