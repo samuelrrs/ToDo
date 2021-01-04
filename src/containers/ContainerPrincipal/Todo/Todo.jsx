@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
-import CloseIcon from '@material-ui/icons/Close';
+import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import { Container } from '@material-ui/core';
 import TodoForm from '../TodoForm/TodoForm';
 import useStyles from './styles';
+import CardTask from '../../../Components/CardTask';
 
-/* import EditIcon from '@material-ui/icons/Edit'; */
 function Todo({ todos, completeTodo, removeTodo, updateTodo }) {
+
     const styles = useStyles()
     const [edit, setEdit] = useState({
         id: null,
@@ -24,38 +25,28 @@ function Todo({ todos, completeTodo, removeTodo, updateTodo }) {
     if (edit.id) {
         return <TodoForm edit={edit} onSubmit={submitUpdate} />
     }
-
     return (
 
         todos.map((todo, index) => (
             <Container className={styles.listaBody}>
-                <Container className={styles.lista}key={index}>
-                    <Container key={todo.id}/*  onClick={() => completeTodo(todo.id)} */>
-                        {todo.text}
-                    </Container>
-                    <Container>
-                        {todo.desc}
-                    </Container>
-                    <Container>
-                        {todo.date}
-                    </Container>
-                    <Container className="icons">
-                        <CloseIcon
+                <CardTask
+                    id={todo.id}
+                    title={todo.text}
+                    desc={todo.desc}
+                    date={todo.date}
+                    remove={
+                        <DeleteIcon
                             onClick={() => removeTodo(todo.id)}
-                            className='delete-icon'
                         />
-
+                    }
+                    edit={
                         <EditIcon
-                            onClick={() => setEdit({ id: todo.id, value: todo.text })}
-                            className='edit-icon'
-                        />
-                    </Container>
-                </Container>
+                            onClick={() => setEdit({ id: todo.id, value: todo.text})}
+                        /> 
+                    }
+                />
             </Container>
         ))
     )
-
-
 }
-
 export default Todo
