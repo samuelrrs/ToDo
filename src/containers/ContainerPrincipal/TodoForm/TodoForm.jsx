@@ -16,12 +16,7 @@ function TodoForm(props) {
     const [date, setDate] = useState(props.edit ? props.edit.value : '')
     const { register, handleSubmit } = useForm();
 
-
-    /*   function handleChangeDesc(e) {
-          setDesc(e.target.value)
-      } */
-
-    function formSubmit(e) {
+    function formSubmit() {
 
         props.onSubmit({
             id: Math.floor(Math.random() * 1000),
@@ -34,11 +29,8 @@ function TodoForm(props) {
         setDate('')
     }
 
-
-
     const [state, setState] = React.useState({
         checkedA: true,
-        checkedB: true,
     });
 
     const switchChange = (event) => {
@@ -57,7 +49,6 @@ function TodoForm(props) {
                         onChange={event => setTitle(event.target.value)}
                         name='text'
                         className='todo-input edit'
-                    /*  inputRef={inputRef} */
                     />
                     <InputText
                         label='Digite a descrição'
@@ -84,7 +75,6 @@ function TodoForm(props) {
                             name='text'
                             register={register}
                             type={"text"}
-                        /*  inputRef={inputRef} */
                         />
                         <InputText
                             label='Digite a descrição'
