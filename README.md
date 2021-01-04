@@ -43,7 +43,7 @@ Rodar o comando : yarn start ou npm run
 ## 🛠 💻 Para acessar o projeto funcional :
 <p>
 
-Clique aqui > [ToDo]('') 
+Clique aqui > [ToDo](https://todo-novatendencia.herokuapp.com/) 
 
 <p>
 
