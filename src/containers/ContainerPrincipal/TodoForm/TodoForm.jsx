@@ -1,4 +1,4 @@
-import React, { useState/* , useRef, useEffect  */} from 'react'
+import React, { useState/* , useRef, useEffect  */ } from 'react'
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import { Container } from '@material-ui/core';
 import useStyles from './styles';
@@ -6,36 +6,32 @@ import ButtonDefault from './../../../Components/ButtonDefault/index';
 import InputText from './../../../Components/InputText/index';
 import { FormControlLabel } from '@material-ui/core';
 import Switch from '@material-ui/core/Switch';
+import { useForm } from "react-hook-form";
 
 
 function TodoForm(props) {
 
+    const [title, setTitle] = useState(props.edit ? props.edit.value : '')
+    const [desc, setDesc] = useState(props.edit ? props.edit.value : '')
+    const [date, setDate] = useState(props.edit ? props.edit.value : '')
+    const { register, handleSubmit } = useForm();
 
-    const [input, setInput] = useState(props.edit ? props.edit.value : '')
-   /*  const [desc, setDesc] = useState('')
-    const [date, setDate] = useState('') */
 
+    /*   function handleChangeDesc(e) {
+          setDesc(e.target.value)
+      } */
 
-   /*  const inputRef = useRef(null)
- */
-   /*  useEffect(() => {
-        inputRef.current.focus()
-    }) */
-    function handleChange(e) {
-        setInput(e.target.value)
-    }
-  /*   function handleChangeDesc(e) {
-        setDesc(e.target.value)
-    } */
-
-    function handleSubmit(e) {
-        e.preventDefault()
+    function formSubmit(e) {
 
         props.onSubmit({
             id: Math.floor(Math.random() * 1000),
-            text: input
+            text: title,
+            desc: desc,
+            date: date
         })
-        setInput('')
+        setTitle('')
+        setDesc('')
+        setDate('')
     }
 
 
@@ -51,18 +47,31 @@ function TodoForm(props) {
     const styles = useStyles()
 
     return (
-        <form className="todo-form" onSubmit={handleSubmit}>
+        <form
+            onSubmit={handleSubmit(formSubmit)}>
             {props.edit ? (
                 <>
                     <InputText
                         label='Digite sua tarefa...'
-                        value={input}
-                        onChange={handleChange}
+                        value={title}
+                        onChange={event => setTitle(event.target.value)}
                         name='text'
                         className='todo-input edit'
-                       /*  inputRef={inputRef} */
+                    /*  inputRef={inputRef} */
                     />
-                    <ButtonDefault onClick={handleSubmit} className='todo-button edit'>
+                    <InputText
+                        label='Digite a descrição'
+                        name='desc'
+                        value={desc}
+                        onChange={event => setDesc(event.target.value)}
+                    />
+                    <InputText
+                        value={date}
+                        name='date'
+                        type="date"
+                        onChange={event => setDate(event.target.value)}
+                    />
+                    <ButtonDefault onClick={formSubmit} className='todo-button edit'>
                         Update
                     </ButtonDefault>
                 </>
@@ -70,22 +79,25 @@ function TodoForm(props) {
                     <Container className={styles.form}>
                         <InputText
                             label='Digite sua descrição...'
-                            value={input}
-                            onChange={handleChange}
+                            value={title}
+                            onChange={event => setTitle(event.target.value)}
                             name='text'
-                            className='todo-input'
-                           /*  inputRef={inputRef} */
+                            register={register}
+                            type={"text"}
+                        /*  inputRef={inputRef} */
                         />
-                        {/* <InputText
+                        <InputText
                             label='Digite a descrição'
+                            name='desc'
                             value={desc}
-                            onChange={handleChangeDesc}
+                            onChange={event => setDesc(event.target.value)}
                         />
-                           <InputText
+                        <InputText
                             value={date}
+                            name='date'
                             type="date"
-
-                        />  */}
+                            onChange={event => setDate(event.target.value)}
+                        />
                         <FormControlLabel
                             control={<Switch checked={state.checkedA} onChange={switchChange} name="checkedA" />}
                             label="Importante"

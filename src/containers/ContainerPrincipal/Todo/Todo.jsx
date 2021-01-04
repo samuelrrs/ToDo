@@ -29,12 +29,15 @@ function Todo({ todos, completeTodo, removeTodo, updateTodo }) {
 
         todos.map((todo, index) => (
             <Container className={styles.listaBody}>
-                <Container className={styles.lista}
-
-                    key={index}
-                >
-                    <Container key={todo.id} onClick={() => completeTodo(todo.id)}>
+                <Container className={styles.lista}key={index}>
+                    <Container key={todo.id}/*  onClick={() => completeTodo(todo.id)} */>
                         {todo.text}
+                    </Container>
+                    <Container>
+                        {todo.desc}
+                    </Container>
+                    <Container>
+                        {todo.date}
                     </Container>
                     <Container className="icons">
                         <CloseIcon
