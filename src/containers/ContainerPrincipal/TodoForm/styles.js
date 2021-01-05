@@ -20,7 +20,13 @@ const useStyles = makeStyles(() => ({
     padding: "10px",
     gap: "20px",
   },
- 
+  formedit: {
+  },
+  switch: {
+    color: "#93C0E4",
+    borderStyle: 'solid'
+  },
+  
 }));
 
 export default useStyles;

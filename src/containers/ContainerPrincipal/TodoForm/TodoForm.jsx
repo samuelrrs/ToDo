@@ -42,7 +42,7 @@ function TodoForm(props) {
         <form
             onSubmit={handleSubmit(formSubmit)}>
             {props.edit ? (
-                <>
+                <Container className={styles.formedit}>
                     <InputText
                         label='Digite sua tarefa...'
                         value={title}
@@ -65,7 +65,7 @@ function TodoForm(props) {
                     <ButtonDefault onClick={formSubmit} className='todo-button edit'>
                         Update
                     </ButtonDefault>
-                </>
+                </Container>
             ) : (
                     <Container className={styles.form}>
                         <InputText
@@ -89,7 +89,9 @@ function TodoForm(props) {
                             onChange={event => setDate(event.target.value)}
                         />
                         <FormControlLabel
-                            control={<Switch checked={state.checkedA} onChange={switchChange} name="checkedA" />}
+                            className={styles.switch}
+                            control={
+                            <Switch checked={state.checkedA} color="primary" onChange={switchChange} name="checkedA" />}
                             label="Importante"
                         />
                         <ButtonDefault
