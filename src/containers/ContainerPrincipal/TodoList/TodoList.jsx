@@ -8,7 +8,7 @@ function TodoList() {
     const [todos, setTodos] = useState([])
 
     function addTodo(todo) {
-        if (!todo.text || /^\s*$/.test(todo.title)) {
+        if (!todo.title || /^\s*$/.test(todo.title)) {
             return
         }
 

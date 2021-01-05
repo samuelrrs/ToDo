@@ -35,15 +35,15 @@ function Todo({ todos, completeTodo, removeTodo, updateTodo }) {
                     desc={todo.desc}
                     date={todo.date}
                     remove={
-                            <DeleteIcon
-                                className={styles.icons}
-                                onClick={() => removeTodo(todo.id)}
-                            />
+                        <DeleteIcon
+                            className={styles.icons}
+                            onClick={() => removeTodo(todo.id)}
+                        />
                     }
                     edit={
                         <EditIcon
                             className={styles.icons}
-                            onClick={() => setEdit({ id: todo.id, value: todo.text })}
+                            onClick={() => setEdit({ id: todo.id, value: todo.title })}
                         />
                     }
                 />

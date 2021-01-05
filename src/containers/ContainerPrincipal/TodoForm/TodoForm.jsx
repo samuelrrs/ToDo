@@ -1,6 +1,6 @@
 import React, { useState/* , useRef, useEffect  */ } from 'react'
 import AddBoxIcon from '@material-ui/icons/AddBox';
-import { Container } from '@material-ui/core';
+import { Container, Typography } from '@material-ui/core';
 import useStyles from './styles';
 import ButtonDefault from '../../../components/ButtonDefault/index';
 import InputText from '../../../components/InputText/index';
@@ -17,7 +17,7 @@ function TodoForm(props) {
     const [date, setDate] = useState(props.edit ? props.edit.value : '')
 
     const schema = yup.object().shape({
-        text: yup.string().min(2, "Minimo de 2 caracteres"),
+        title: yup.string().min(2, "Minimo de 2 caracteres"),
         desc: yup.string().min(2, "Minimo de 2 caracteres"),
     });
 
@@ -29,7 +29,7 @@ function TodoForm(props) {
 
         props.onSubmit({
             id: Math.floor(Math.random() * 1000),
-            text: title,
+            title: title,
             desc: desc,
             date: date
         })
@@ -55,25 +55,30 @@ function TodoForm(props) {
                     <InputText
                         label='Digite sua tarefa...'
                         value={title}
-                        onChange={event => setTitle(event.target.value)}
-                        name='text'
+                        onChange={event => setTitle(() => event.target.value)}
+                        name='title'
                         className='todo-input edit'
+
                     />
+                    <p>{errors.title?.message}</p>
+
                     <InputText
                         label='Digite a descrição'
                         name='desc'
                         value={desc}
-                        onChange={event => setDesc(event.target.value)}
+                        onChange={event => setDesc(() => event.target.value)}
                     />
+                    <p>{errors.desc?.message}</p>
+
                     <InputText
                         value={date}
                         name='date'
                         type="date"
-                        onChange={event => setDate(event.target.value)}
+                        onChange={event => setDate(() => event.target.value)}
                         className={styles.date}
                     />
                     <ButtonDefault onClick={formSubmit} className='todo-button edit'>
-                        Update
+                        Salvar alteração
                     </ButtonDefault>
                 </Container>
             ) : (
@@ -82,18 +87,19 @@ function TodoForm(props) {
                             label='Digite sua tarefa...'
                             value={title}
                             onChange={event => setTitle(event.target.value)}
-                            name='text'
-                            register={register}
+                            name='title'
+                            inputRef={register({ required: true })}
                             type={"text"}
                         />
-                        <p>{errors.text?.message}</p>
+                        <Typography>{errors.title?.message}</Typography>
                         <InputText
                             label='Digite a descrição'
                             name='desc'
                             value={desc}
+                            inputRef={register({ required: true })}
                             onChange={event => setDesc(event.target.value)}
                         />
-                        <p>{errors.desc?.message}</p>
+                        <Typography>{errors.desc?.message}</Typography>
                         <InputText
                             className={styles.date}
                             value={date}
