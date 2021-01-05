@@ -8,7 +8,7 @@ function TodoList() {
     const [todos, setTodos] = useState([])
 
     function addTodo(todo) {
-        if (!todo.text || /^\s*$/.test(todo.text)) {
+        if (!todo.text || /^\s*$/.test(todo.title)) {
             return
         }
 
@@ -18,7 +18,7 @@ function TodoList() {
     }
 
     function updateTodo(todoId, newValue) {
-        if (!newValue.text || /^\s*$/.test(newValue.text)) {
+        if (!newValue.title || /^\s*$/.test(newValue.title)) {
             return
         }
         setTodos(prev => prev.map(item => (item.id === todoId ? newValue : item)))

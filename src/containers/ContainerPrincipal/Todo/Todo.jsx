@@ -4,7 +4,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import { Container } from '@material-ui/core';
 import TodoForm from '../TodoForm/TodoForm';
 import useStyles from './styles';
-import CardTask from '../../../Components/CardTask';
+import CardTask from '../../../components/CardTask';
 
 function Todo({ todos, completeTodo, removeTodo, updateTodo }) {
 
@@ -31,7 +31,7 @@ function Todo({ todos, completeTodo, removeTodo, updateTodo }) {
             <Container className={styles.listaBody}>
                 <CardTask
                     id={todo.id}
-                    title={todo.text}
+                    title={todo.title}
                     desc={todo.desc}
                     date={todo.date}
                     remove={

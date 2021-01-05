@@ -2,8 +2,8 @@ import React, { useState/* , useRef, useEffect  */ } from 'react'
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import { Container } from '@material-ui/core';
 import useStyles from './styles';
-import ButtonDefault from './../../../Components/ButtonDefault/index';
-import InputText from './../../../Components/InputText/index';
+import ButtonDefault from '../../../components/ButtonDefault/index';
+import InputText from '../../../components/InputText/index';
 import { FormControlLabel } from '@material-ui/core';
 import Switch from '@material-ui/core/Switch';
 import { useForm } from "react-hook-form";
@@ -17,9 +17,10 @@ function TodoForm(props) {
     const [date, setDate] = useState(props.edit ? props.edit.value : '')
 
     const schema = yup.object().shape({
-        text: yup.string().min(2),
-        desc: yup.string().min(2),
+        text: yup.string().min(2, "Minimo de 2 caracteres"),
+        desc: yup.string().min(2, "Minimo de 2 caracteres"),
     });
+
     const { register, handleSubmit, errors } = useForm({
         resolver: yupResolver(schema),
     });
@@ -69,6 +70,7 @@ function TodoForm(props) {
                         name='date'
                         type="date"
                         onChange={event => setDate(event.target.value)}
+                        className={styles.date}
                     />
                     <ButtonDefault onClick={formSubmit} className='todo-button edit'>
                         Update
@@ -92,8 +94,8 @@ function TodoForm(props) {
                             onChange={event => setDesc(event.target.value)}
                         />
                         <p>{errors.desc?.message}</p>
-
                         <InputText
+                            className={styles.date}
                             value={date}
                             name='date'
                             type="date"

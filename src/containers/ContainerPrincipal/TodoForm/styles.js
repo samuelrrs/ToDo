@@ -30,6 +30,10 @@ const useStyles = makeStyles(() => ({
     color: "#93C0E4",
     borderStyle: "solid",
   },
+  date: {
+    backgroundColor: "#93C0E4",
+    borderStyle: "solid",
+  },
 }));
 
 export default useStyles;
