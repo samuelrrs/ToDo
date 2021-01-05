@@ -21,12 +21,15 @@ const useStyles = makeStyles(() => ({
     gap: "20px",
   },
   formedit: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: 15,
   },
   switch: {
     color: "#93C0E4",
-    borderStyle: 'solid'
+    borderStyle: "solid",
   },
-  
 }));
 
 export default useStyles;

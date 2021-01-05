@@ -7,14 +7,22 @@ import InputText from './../../../Components/InputText/index';
 import { FormControlLabel } from '@material-ui/core';
 import Switch from '@material-ui/core/Switch';
 import { useForm } from "react-hook-form";
-
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
 
 function TodoForm(props) {
 
     const [title, setTitle] = useState(props.edit ? props.edit.value : '')
     const [desc, setDesc] = useState(props.edit ? props.edit.value : '')
     const [date, setDate] = useState(props.edit ? props.edit.value : '')
-    const { register, handleSubmit } = useForm();
+
+    const schema = yup.object().shape({
+        text: yup.string().min(2),
+        desc: yup.string().min(2),
+    });
+    const { register, handleSubmit, errors } = useForm({
+        resolver: yupResolver(schema),
+    });
 
     function formSubmit() {
 
@@ -69,19 +77,22 @@ function TodoForm(props) {
             ) : (
                     <Container className={styles.form}>
                         <InputText
-                            label='Digite sua descrição...'
+                            label='Digite sua tarefa...'
                             value={title}
                             onChange={event => setTitle(event.target.value)}
                             name='text'
                             register={register}
                             type={"text"}
                         />
+                        <p>{errors.text?.message}</p>
                         <InputText
                             label='Digite a descrição'
                             name='desc'
                             value={desc}
                             onChange={event => setDesc(event.target.value)}
                         />
+                        <p>{errors.desc?.message}</p>
+
                         <InputText
                             value={date}
                             name='date'
@@ -91,7 +102,7 @@ function TodoForm(props) {
                         <FormControlLabel
                             className={styles.switch}
                             control={
-                            <Switch checked={state.checkedA} color="primary" onChange={switchChange} name="checkedA" />}
+                                <Switch checked={state.checkedA} color="primary" onChange={switchChange} name="checkedA" />}
                             label="Importante"
                         />
                         <ButtonDefault

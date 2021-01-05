@@ -15,7 +15,9 @@ const useStyles = makeStyles(() => ({
   listaBody: {
     display: "flex",
     flexDirection: "row",
-    
+  },
+  icons: {
+    cursor: "pointer",
   },
 }));
 
