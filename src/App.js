@@ -1,4 +1,4 @@
-import './App.css'
+import './assets/global/styles.css'
 import Main from './pages/Main/index';
 function App() {
   return (
