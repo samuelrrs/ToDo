@@ -12,13 +12,13 @@ function CardTask({ id, title, desc, date, edit, remove }) {
             variant="outlined"
             className={styles.cardPrincipal}>
             <CardContent>
-                <Typography color="textSecondary" gutterBottom>
+                <Typography className={styles.id}>
                     {id}
                 </Typography>
-                <Typography variant="h5" component="h2">
+                <Typography className={styles.title}>
                     {title}
                 </Typography>
-                <Typography color="textSecondary">
+                <Typography className={styles.desc}>
                     {desc}
                 </Typography>
                 <Typography variant="body2" component="p">
