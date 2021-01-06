@@ -13,8 +13,8 @@ import * as yup from "yup";
 function TodoForm(props) {
 
     const [title, setTitle] = useState(props.edit ? props.edit.value : '')
-    const [desc, setDesc] = useState(props.edit ? props.edit.value : '')
-    const [date, setDate] = useState(props.edit ? props.edit.value : '')
+    const [desc, setDesc] = useState(props.edit ? props.edit.desc : '')
+    const [date, setDate] = useState(props.edit ? props.edit.date : '')
     const [isFavorite, setIsfavorite] = useState(false);
 
     const schema = yup.object().shape({
@@ -52,20 +52,23 @@ function TodoForm(props) {
             {props.edit ? (
                 <Container className={styles.formedit}>
                     <InputText
-                        label='Digite sua tarefa...'
+                        label='Edite sua tarefa...'
                         value={title}
                         onChange={event => setTitle(() => event.target.value)}
                         name='title'
-                        className='todo-input edit'
+                        color="secondary"
 
                     />
                     <p>{errors.title?.message}</p>
 
                     <InputText
-                        label='Digite a descrição'
+                        label='Edite a descrição'
                         name='desc'
                         value={desc}
                         onChange={event => setDesc(() => event.target.value)}
+                        className={styles.inputEdit}
+                        color="secondary"
+
                     />
                     <p>{errors.desc?.message}</p>
 
@@ -75,12 +78,16 @@ function TodoForm(props) {
                         type="date"
                         onChange={event => setDate(() => event.target.value)}
                         className={styles.date}
+                        error
+
                     />
                     <ButtonDefault onClick={formSubmit} className='todo-button edit'>
                         Salvar alteração
                     </ButtonDefault>
                 </Container>
             ) : (
+
+             /*    INPUT SAVE  */
                     <Container className={styles.form}>
 
                         <InputText

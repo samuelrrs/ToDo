@@ -33,7 +33,7 @@ const useStyles = makeStyles(() => ({
   date: {
     backgroundColor: "#93C0E4",
     borderStyle: "solid",
-  },
+  }
 }));
 
 export default useStyles;
