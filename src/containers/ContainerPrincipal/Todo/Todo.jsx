@@ -6,19 +6,31 @@ import TodoForm from '../TodoForm/TodoForm';
 import useStyles from './styles';
 import CardTask from '../../../components/CardTask';
 import moment from 'moment'
+import { FormControlLabel } from '@material-ui/core';
+import Switch from '@material-ui/core/Switch';
+
 function Todo({ todos, completeTodo, removeTodo, updateTodo }) {
 
     const styles = useStyles()
+    const [isFavorite, setIsfavorite] = useState(false);
+
+
     const [edit, setEdit] = useState({
         id: null,
-        value: ''
+        value: '',
+        desc: '',
+        date: '',
+        isFavorite: ''
     })
-
-    function submitUpdate(value) {
-        updateTodo(edit.id, value)
+    
+    function submitUpdate(value, desc, date) {
+        updateTodo(edit.id, value, desc, date)
         setEdit({
             id: null,
-            value: ''
+            value: '',
+            desc: '',
+            date: '',
+            isFavorite
         })
     }
 
@@ -34,6 +46,14 @@ function Todo({ todos, completeTodo, removeTodo, updateTodo }) {
                     title={todo.title}
                     desc={todo.desc}
                     date={moment(todo.date).format('DD/MM/YYYY')}
+                    favorite={
+                        <FormControlLabel
+                            className={styles.switch}
+                            control={
+                                <Switch checked={todo.isFavorite} color="primary" onChange={event => setIsfavorite(event.target.checked)} name="checkedA" />}
+                            label="Importante"
+                        />
+                    }
                     remove={
                         <DeleteIcon
                             className={styles.icons}
@@ -43,7 +63,7 @@ function Todo({ todos, completeTodo, removeTodo, updateTodo }) {
                     edit={
                         <EditIcon
                             className={styles.icons}
-                            onClick={() => setEdit({ id: todo.id, value: todo.title })}
+                            onClick={() => setEdit({ id: todo.id, value: todo.title, desc: todo.desc, date: todo.date })}
                         />
                     }
                 />
