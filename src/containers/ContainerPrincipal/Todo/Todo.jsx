@@ -5,7 +5,7 @@ import { Container } from '@material-ui/core';
 import TodoForm from '../TodoForm/TodoForm';
 import useStyles from './styles';
 import CardTask from '../../../components/CardTask';
-
+import moment from 'moment'
 function Todo({ todos, completeTodo, removeTodo, updateTodo }) {
 
     const styles = useStyles()
@@ -33,7 +33,7 @@ function Todo({ todos, completeTodo, removeTodo, updateTodo }) {
                     id={todo.id}
                     title={todo.title}
                     desc={todo.desc}
-                    date={todo.date}
+                    date={moment(todo.date).format('DD/MM/YYYY')}
                     remove={
                         <DeleteIcon
                             className={styles.icons}
