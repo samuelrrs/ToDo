@@ -42,6 +42,9 @@ function TodoList() {
     }
     const styles = useStyles()
     return (
+        <Container>
+
+       
         <Container className={styles.container}>
             <Typography className={styles.title}>Qual sua rotina pra hoje ?</Typography>
             <TodoForm onSubmit={addTodo} />
@@ -51,6 +54,7 @@ function TodoList() {
                 removeTodo={removeTodo}
                 updateTodo={updateTodo}
             />
+        </Container>
         </Container>
     )
 }

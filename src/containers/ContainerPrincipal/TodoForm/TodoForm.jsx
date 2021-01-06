@@ -15,6 +15,7 @@ function TodoForm(props) {
     const [title, setTitle] = useState(props.edit ? props.edit.value : '')
     const [desc, setDesc] = useState(props.edit ? props.edit.value : '')
     const [date, setDate] = useState(props.edit ? props.edit.value : '')
+    const [isFavorite, setIsfavorite] = useState(false);
 
     const schema = yup.object().shape({
         title: yup.string().min(2, "Minimo de 2 caracteres"),
@@ -31,20 +32,18 @@ function TodoForm(props) {
             id: Math.floor(Math.random() * 1000),
             title: title,
             desc: desc,
-            date: date
+            date: date,
+            importante: isFavorite,
         })
         setTitle('')
         setDesc('')
         setDate('')
+        setIsfavorite(false)
+
+        console.log(isFavorite)
     }
 
-    const [state, setState] = React.useState({
-        checkedA: true,
-    });
 
-    const switchChange = (event) => {
-        setState({ ...state, [event.target.name]: event.target.checked });
-    };
     const styles = useStyles()
 
     return (
@@ -83,6 +82,7 @@ function TodoForm(props) {
                 </Container>
             ) : (
                     <Container className={styles.form}>
+
                         <InputText
                             label='Digite sua tarefa...'
                             value={title}
@@ -92,6 +92,7 @@ function TodoForm(props) {
                             type={"text"}
                         />
                         <Typography>{errors.title?.message}</Typography>
+
                         <InputText
                             label='Digite a descrição'
                             name='desc'
@@ -100,6 +101,7 @@ function TodoForm(props) {
                             onChange={event => setDesc(event.target.value)}
                         />
                         <Typography>{errors.desc?.message}</Typography>
+
                         <InputText
                             className={styles.date}
                             value={date}
@@ -110,7 +112,7 @@ function TodoForm(props) {
                         <FormControlLabel
                             className={styles.switch}
                             control={
-                                <Switch checked={state.checkedA} color="primary" onChange={switchChange} name="checkedA" />}
+                                <Switch checked={isFavorite} color="primary" onChange={event => setIsfavorite(event.target.checked)} name="checkedA" />}
                             label="Importante"
                         />
                         <ButtonDefault
@@ -122,6 +124,7 @@ function TodoForm(props) {
                         </ButtonDefault>
 
                     </Container>
+                    
                 )}
         </form>
     )

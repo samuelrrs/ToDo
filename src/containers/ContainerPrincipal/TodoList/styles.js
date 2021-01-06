@@ -7,7 +7,8 @@ const useStyles = makeStyles(() => ({
   fontSize: '24px',
   padding: '35px'
   },
-  container: {
+  logo: {
+    width: '60%'
   }
 }));
 

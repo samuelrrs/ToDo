@@ -4,7 +4,7 @@ import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import { Typography } from '@material-ui/core'
 import useStyles from './styles'
-function CardTask({ id, title, desc, date, edit, remove }) {
+function CardTask({ id, title, desc, date, edit, remove, favorite }) {
 
     const styles = useStyles()
     return (
@@ -23,6 +23,9 @@ function CardTask({ id, title, desc, date, edit, remove }) {
                 </Typography>
                 <Typography variant="body2" component="p">
                     {date}
+                </Typography>
+                <Typography variant="body2" component="p">
+                    {favorite}
                 </Typography>
             </CardContent>
             <CardActions>
