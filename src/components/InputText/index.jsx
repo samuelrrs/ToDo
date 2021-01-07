@@ -14,7 +14,6 @@ export default function InputText ( { label, value, onChange, type, inputRef, na
             variant="outlined"
             value={ value }
             onChange={ onChange }
-            required={ true }
             inputRef={ inputRef }
             multiline={ false }
             name={ name }

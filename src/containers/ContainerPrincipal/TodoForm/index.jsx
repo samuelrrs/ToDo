@@ -9,7 +9,6 @@ import Switch from '@material-ui/core/Switch';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
-
 function TodoForm ( props ) {
 
     const [ title, setTitle ] = useState( props.edit ? props.edit.value : '' )
@@ -18,8 +17,8 @@ function TodoForm ( props ) {
     const [ isFavorite, setIsfavorite ] = useState( false );
 
     const schema = yup.object().shape( {
-        title: yup.string().min( 2, "Minimo de 2 caracteres" ),
-        desc: yup.string().min( 2, "Minimo de 2 caracteres" ),
+        title: yup.string().min( 2, "Minimo de 2 caracteres" ).required( 'O campo em questão não pode ser em branco' ),
+        desc: yup.string().min( 2, "Minimo de 2 caracteres" ).required( 'O campo em questão não pode ser em branco' ),
     } );
 
     const { register, handleSubmit, errors } = useForm( {

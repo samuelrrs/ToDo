@@ -102,11 +102,10 @@ section {
 }
 body {
   line-height: 1;
-  background-image: url("https://i.imgur.com/CYbMsJK.jpg");
+  background-image: url('https://i.imgur.com/CYbMsJK.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-
 }
 ol,
 ul {
@@ -120,12 +119,30 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: "";
+  content: '';
   content: none;
 }
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-* {
+.custom-shape-divider-bottom-1610045505 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(360deg);
+}
+
+.custom-shape-divider-bottom-1610045505 svg {
+  position: relative;
+  display: block;
+  width: calc(158% + 1.3px);
+  height: 120px;
+}
+
+.custom-shape-divider-bottom-1610045505 .shape-fill {
+  fill: #1b10106e;
 }

@@ -42,6 +42,7 @@ function Todo ( { todos, completeTodo, removeTodo, updateTodo } ) {
         todos.map( ( todo, index ) => (
             <Container className={ styles.listaBody }>
                 <CardTask
+                    className={ styles.cardListado }
                     id={ todo.id }
                     title={ todo.title }
                     desc={ todo.desc }

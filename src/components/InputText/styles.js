@@ -1,37 +1,37 @@
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(() => ({
   input: {
-    width: "200px",
-    color: "white",
-    "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-      borderColor: "white",
+    width: '200px',
+    color: 'white',
+    '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+      borderColor: 'white',
     },
-    "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-      borderColor: "white",
+    '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+      borderColor: 'white',
     },
-    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-      borderColor: "gray",
+    '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
+      borderColor: 'white',
     },
-    "& .MuiOutlinedInput-input": {
-      color: "gray",
+    '& .MuiOutlinedInput-input': {
+      color: 'white',
     },
-    "&:hover .MuiOutlinedInput-input": {
-      color: "gray",
+    '&:hover .MuiOutlinedInput-input': {
+      color: 'white',
     },
-    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input": {
-      color: "gray",
+    '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input': {
+      color: 'white',
     },
-    "& .MuiInputLabel-outlined": {
-      color: "gray",
+    '& .MuiInputLabel-outlined': {
+      color: 'white',
     },
-    "&:hover .MuiInputLabel-outlined": {
-      color: "gray",
+    '&:hover .MuiInputLabel-outlined': {
+      color: 'white',
     },
-    "& .MuiInputLabel-outlined.Mui-focused": {
-      color: "white",
+    '& .MuiInputLabel-outlined.Mui-focused': {
+      color: 'white',
     },
   },
-}));
+}))
 
-export default useStyles;
+export default useStyles
