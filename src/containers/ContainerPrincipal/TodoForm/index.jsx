@@ -4,8 +4,8 @@ import { Container, Typography } from '@material-ui/core';
 import useStyles from './styles';
 import ButtonDefault from '../../../components/ButtonDefault/index';
 import InputText from '../../../components/InputText/index';
-import { FormControlLabel } from '@material-ui/core';
-import Switch from '@material-ui/core/Switch';
+/* import { FormControlLabel } from '@material-ui/core';
+import Switch from '@material-ui/core/Switch'; */
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
@@ -115,12 +115,12 @@ function TodoForm ( props ) {
                             type="date"
                             onChange={ event => setDate( event.target.value ) }
                         />
-                        <FormControlLabel
+                        {/*  <FormControlLabel
                             className={ styles.switch }
                             control={
                                 <Switch checked={ isFavorite } color="primary" onChange={ event => setIsfavorite( event.target.checked ) } name="checkedA" /> }
                             label="Importante"
-                        />
+                        /> */}
                         <ButtonDefault
                             color={ 'primary' }
                             type={ 'submit' }
