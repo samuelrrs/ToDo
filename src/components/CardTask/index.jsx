@@ -5,14 +5,12 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import EditIcon from '@material-ui/icons/Edit';
-import Button from '@material-ui/core/Button';
 import useStyles from './styles';
 import { Container } from '@material-ui/core';
 
 
 
-export default function ActionsInAccordionSummary ( { id, title, desc } ) {
+export default function ActionsInAccordionSummary ( { id, title, desc, edit, remove } ) {
     const styles = useStyles();
 
     return (
@@ -31,9 +29,11 @@ export default function ActionsInAccordionSummary ( { id, title, desc } ) {
                         onClick={ ( event ) => event.stopPropagation() }
                         onFocus={ ( event ) => event.stopPropagation() }
                         control={
-                            <Button>
-                                <EditIcon className={ styles.icons } />
-                            </Button> }
+                            <>
+                                { edit }
+                                { remove }
+                            </>
+                        }
                         label={ title }
                     />
                 </AccordionSummary>

@@ -7,8 +7,8 @@ const useStyles = makeStyles(() => ({
     width: '100%',
     backgroundColor: '#465166',
     color: 'white',
-    marginTop: 10,
-    marginBottom: 10,
+    marginTop: 5,
+    marginBottom: 5,
   },
   descContainer: {
     gap: 20,

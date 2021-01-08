@@ -18,6 +18,8 @@ const useStyles = makeStyles(() => ({
   },
   icons: {
     cursor: 'pointer',
+    color: 'white',
+    padding: 5,
   },
   cardListado: {
     display: 'flex',
