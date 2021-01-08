@@ -1,39 +1,50 @@
-import React from 'react'
-import Card from '@material-ui/core/Card'
-import CardActions from '@material-ui/core/CardActions'
-import CardContent from '@material-ui/core/CardContent'
-import { Typography } from '@material-ui/core'
-import useStyles from './styles'
-function CardTask ( { id, title, desc, date, edit, remove, favorite } ) {
+import React from 'react';
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import EditIcon from '@material-ui/icons/Edit';
+import Button from '@material-ui/core/Button';
+import useStyles from './styles';
+import { Container } from '@material-ui/core';
 
-    const styles = useStyles()
+
+
+export default function ActionsInAccordionSummary ( { id, title, desc } ) {
+    const styles = useStyles();
+
     return (
-        <Card
-            variant="outlined"
-            className={ styles.cardPrincipal }>
-            <CardContent>
-                <Typography className={ styles.id }>
-                    { id }
-                </Typography>
-                <Typography className={ styles.title }>
-                    { title }
-                </Typography>
-                <Typography className={ styles.desc }>
-                    { desc }
-                </Typography>
-                <Typography variant="body2" component="p">
-                    { date }
-                </Typography>
-                <Typography variant="body2" component="p">
-                    { favorite }
-                </Typography>
-            </CardContent>
-            <CardActions>
-                { remove }
-                { edit }
-            </CardActions>
-        </Card>
-    )
-}
+        <Container>
+            <Accordion
+                className={ styles.acordionPrincipal }
+            >
+                <AccordionSummary
+                    expandIcon={ <ExpandMoreIcon /> }
+                    aria-label="Expand"
+                    aria-controls="additional-actions1-content"
+                    id={ id }
+                >
+                    <FormControlLabel
+                        aria-label="Acknowledge"
+                        onClick={ ( event ) => event.stopPropagation() }
+                        onFocus={ ( event ) => event.stopPropagation() }
+                        control={
+                            <Button>
+                                <EditIcon className={ styles.icons } />
+                            </Button> }
+                        label={ title }
+                    />
+                </AccordionSummary>
+                <AccordionDetails className={ styles.descContainer }>
+                    <Typography color="textSecondary" className={ styles.desc }>
+                        { desc }
+                    </Typography>
+                </AccordionDetails>
+            </Accordion>
 
-export default CardTask
+
+        </Container>
+    );
+}
