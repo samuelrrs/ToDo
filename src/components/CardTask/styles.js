@@ -22,6 +22,12 @@ const useStyles = makeStyles(() => ({
   info: {
     display: 'flex',
     flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+  infoSec: {
+    display: 'flex',
+    flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
   },

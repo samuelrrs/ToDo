@@ -8,6 +8,7 @@ import { FormControlLabel } from '@material-ui/core';
 import Switch from '@material-ui/core/Switch';
 import TodoForm from './../TodoForm/index';
 import moment from 'moment';
+import InfoIcon from '@material-ui/icons/Info';
 
 function Todo ( { todos, completeTodo, removeTodo, updateTodo } ) {
 
@@ -48,12 +49,7 @@ function Todo ( { todos, completeTodo, removeTodo, updateTodo } ) {
                     desc={ todo.desc }
                     date={ moment( todo.date ).format( 'DD/MM/YYYY' ) }
                     favorite={
-                        <FormControlLabel
-                            className={ styles.switch }
-                            control={
-                                <Switch checked={ todo.isFavorite } color="primary" onChange={ event => setIsfavorite( event.target.checked ) } name="checkedA" /> }
-                            label="Importante"
-                        />
+                        isFavorite ? <InfoIcon /> : null
                     }
                     remove={
                         <DeleteIcon
@@ -66,6 +62,7 @@ function Todo ( { todos, completeTodo, removeTodo, updateTodo } ) {
                             className={ styles.icons }
                             onClick={ () => setEdit( { id: todo.id, value: todo.title, desc: todo.desc, date: todo.date } ) }
                         />
+
                     }
                 />
             </Container>

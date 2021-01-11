@@ -6,11 +6,16 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import useStyles from './styles';
+
+import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip';
+
+
 import { Container } from '@material-ui/core';
 
 
 
-export default function ActionsInAccordionSummary ( { id, title, desc, edit, remove, date } ) {
+export default function ActionsInAccordionSummary ( { id, title, desc, edit, remove, date, favorite } ) {
     const styles = useStyles();
 
     return (
@@ -30,22 +35,29 @@ export default function ActionsInAccordionSummary ( { id, title, desc, edit, rem
                         onClick={ ( event ) => event.stopPropagation() }
                         onFocus={ ( event ) => event.stopPropagation() }
                         control={
-                            <>
-                                { edit }
+                            <Container className={ styles.info }>
                                 { remove }
-                            </>
+                                { edit }
+                            </Container>
                         }
                     />
                     <Container className={ styles.info }>
                         <Typography >{ title }</Typography>
                         <Typography >{ date }</Typography>
                     </Container>
+                    <Tooltip title="IMPORTANTE">
+                        <IconButton aria-label="delete">
+                            { favorite }
+                        </IconButton>
+                    </Tooltip>
 
                 </AccordionSummary>
                 <AccordionDetails className={ styles.descContainer }>
-                    <Typography color="textSecondary" className={ styles.desc }>
-                        { desc }
-                    </Typography>
+                    <Container className={ styles.infoSec }>
+                        <Typography color="textSecondary" className={ styles.desc }>
+                            { desc }
+                        </Typography>
+                    </Container>
                 </AccordionDetails>
             </Accordion>
 
