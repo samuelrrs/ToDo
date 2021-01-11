@@ -85,7 +85,6 @@ function TodoForm ( props ) {
                     </ButtonDefault>
                 </Container>
             ) : (
-
                     /*    INPUT SAVE  */
                     <Container className={ styles.form }>
 
@@ -130,7 +129,6 @@ function TodoForm ( props ) {
                         </ButtonDefault>
 
                     </Container>
-
                 ) }
         </form>
     )

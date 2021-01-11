@@ -4,8 +4,6 @@ import EditIcon from '@material-ui/icons/Edit';
 import { Container } from '@material-ui/core';
 import useStyles from './styles';
 import CardTask from '../../../components/CardTask';
-import { FormControlLabel } from '@material-ui/core';
-import Switch from '@material-ui/core/Switch';
 import TodoForm from './../TodoForm/index';
 import moment from 'moment';
 import InfoIcon from '@material-ui/icons/Info';
@@ -13,7 +11,6 @@ import InfoIcon from '@material-ui/icons/Info';
 function Todo ( { todos, completeTodo, removeTodo, updateTodo } ) {
 
     const styles = useStyles()
-    const [ isFavorite, setIsfavorite ] = useState( false );
 
 
     const [ edit, setEdit ] = useState( {
@@ -21,17 +18,17 @@ function Todo ( { todos, completeTodo, removeTodo, updateTodo } ) {
         value: '',
         desc: '',
         date: '',
-        isFavorite: ''
+        isFavorite: null
     } )
 
-    function submitUpdate ( value, desc, date ) {
-        updateTodo( edit.id, value, desc, date )
+    function submitUpdate ( value, desc, date, isFavorite ) {
+        updateTodo( edit.id, value, desc, date, isFavorite )
         setEdit( {
             id: null,
             value: '',
             desc: '',
             date: '',
-            isFavorite
+            isFavorite: null
         } )
     }
 
@@ -49,7 +46,7 @@ function Todo ( { todos, completeTodo, removeTodo, updateTodo } ) {
                     desc={ todo.desc }
                     date={ moment( todo.date ).format( 'DD/MM/YYYY' ) }
                     favorite={
-                        isFavorite ? <InfoIcon /> : null
+                        todo.isFavorite ? <InfoIcon /> : null
                     }
                     remove={
                         <DeleteIcon
