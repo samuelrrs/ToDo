@@ -34,6 +34,9 @@ const useStyles = makeStyles(() => ({
     backgroundColor: '#93C0E4',
     borderStyle: 'solid',
   },
+  icons: {
+    padding: 10,
+  },
 }))
 
 export default useStyles

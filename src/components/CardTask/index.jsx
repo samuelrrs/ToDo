@@ -10,7 +10,7 @@ import { Container } from '@material-ui/core';
 
 
 
-export default function ActionsInAccordionSummary ( { id, title, desc, edit, remove } ) {
+export default function ActionsInAccordionSummary ( { id, title, desc, edit, remove, date } ) {
     const styles = useStyles();
 
     return (
@@ -24,6 +24,7 @@ export default function ActionsInAccordionSummary ( { id, title, desc, edit, rem
                     aria-controls="additional-actions1-content"
                     id={ id }
                 >
+
                     <FormControlLabel
                         aria-label="Acknowledge"
                         onClick={ ( event ) => event.stopPropagation() }
@@ -34,8 +35,12 @@ export default function ActionsInAccordionSummary ( { id, title, desc, edit, rem
                                 { remove }
                             </>
                         }
-                        label={ title }
                     />
+                    <Container className={ styles.info }>
+                        <Typography >{ title }</Typography>
+                        <Typography >{ date }</Typography>
+                    </Container>
+
                 </AccordionSummary>
                 <AccordionDetails className={ styles.descContainer }>
                     <Typography color="textSecondary" className={ styles.desc }>
