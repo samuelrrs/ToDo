@@ -1,4 +1,4 @@
-import React, { useState/* , useRef, useEffect  */ } from 'react'
+import React, { useState/* , useRef, useEffect */ } from 'react'
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import { Container, Typography } from '@material-ui/core';
 import useStyles from './styles';
@@ -8,7 +8,7 @@ import { FormControlLabel } from '@material-ui/core';
 import Switch from '@material-ui/core/Switch';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from "yup";
+import { schemaValidation } from './../../../utils/validation/taskValidation';
 function TodoForm ( props ) {
 
     const [ title, setTitle ] = useState( props.edit ? props.edit.value : '' )
@@ -16,13 +16,11 @@ function TodoForm ( props ) {
     const [ date, setDate ] = useState( props.edit ? props.edit.date : '' )
     const [ isFavorite, setIsfavorite ] = useState( false );
 
-    const schema = yup.object().shape( {
-        title: yup.string().min( 2, "Minimo de 2 caracteres" ).required( 'O campo em questão não pode ser em branco' ),
-        desc: yup.string().min( 2, "Minimo de 2 caracteres" ).required( 'O campo em questão não pode ser em branco' ),
-    } );
+
 
     const { register, handleSubmit, errors } = useForm( {
-        resolver: yupResolver( schema ),
+        resolver: yupResolver( schemaValidation ),
+        reValidateMode: 'onBlur'
     } );
 
     function formSubmit () {
@@ -34,12 +32,15 @@ function TodoForm ( props ) {
             date: date,
             importante: isFavorite,
         } )
+
+
+
         setTitle( '' )
         setDesc( '' )
         setDate( '' )
         setIsfavorite( false )
 
-        console.log( isFavorite )
+        console.log( date )
     }
 
 
@@ -56,10 +57,8 @@ function TodoForm ( props ) {
                         onChange={ event => setTitle( () => event.target.value ) }
                         name='title'
                         color="secondary"
-
                     />
                     <p>{ errors.title?.message }</p>
-
                     <InputText
                         label='Edite a descrição'
                         name='desc'
@@ -67,7 +66,6 @@ function TodoForm ( props ) {
                         onChange={ event => setDesc( () => event.target.value ) }
                         className={ styles.inputEdit }
                         color="secondary"
-
                     />
                     <p>{ errors.desc?.message }</p>
 
@@ -78,9 +76,8 @@ function TodoForm ( props ) {
                         onChange={ event => setDate( () => event.target.value ) }
                         className={ styles.date }
                         error
-
                     />
-                    <ButtonDefault onClick={ formSubmit } className='todo-button edit'>
+                    <ButtonDefault onClick={ formSubmit } >
                         Salvar alteração
                     </ButtonDefault>
                 </Container>
@@ -114,6 +111,8 @@ function TodoForm ( props ) {
                             type="date"
                             onChange={ event => setDate( event.target.value ) }
                         />
+                        <Typography>{ errors.date?.message }</Typography>
+
                         <FormControlLabel
                             className={ styles.switch }
                             control={

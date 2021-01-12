@@ -26,10 +26,7 @@ const useStyles = makeStyles(() => ({
     alignItems: 'center',
   },
   infoSec: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    maxWidth: '100%',
   },
 }))
 

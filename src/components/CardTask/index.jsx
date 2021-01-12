@@ -7,10 +7,6 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import useStyles from './styles';
 
-import IconButton from '@material-ui/core/IconButton';
-import Tooltip from '@material-ui/core/Tooltip';
-
-
 import { Container } from '@material-ui/core';
 
 
@@ -45,11 +41,8 @@ export default function ActionsInAccordionSummary ( { id, title, desc, edit, rem
                         <Typography >{ title }</Typography>
                         <Typography >{ date }</Typography>
                     </Container>
-                    <Tooltip title="IMPORTANTE">
-                        <IconButton aria-label="delete">
-                            { favorite }
-                        </IconButton>
-                    </Tooltip>
+
+                    { favorite }
 
                 </AccordionSummary>
                 <AccordionDetails className={ styles.descContainer }>
