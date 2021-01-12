@@ -1,11 +1,20 @@
 import { Typography, Container } from '@material-ui/core';
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import useStyles from './styles';
 import TodoForm from './../TodoForm/index';
 import Todo from './../Todo/index';
 
 function TodoList () {
     const [ todos, setTodos ] = useState( [] )
+    useEffect( () => {
+        const todoStorage = localStorage.getItem( 'tasks' )
+        if ( todoStorage ) {
+            setTodos( JSON.parse( todoStorage ) )
+        }
+    }, [] )
+    useEffect( () => {
+        localStorage.setItem( 'tasks', JSON.stringify( todos ) )
+    }, [ todos ] )
 
     function addTodo ( todo ) {
         if ( !todo.title || /^\s*$/.test( todo.title ) ) {
