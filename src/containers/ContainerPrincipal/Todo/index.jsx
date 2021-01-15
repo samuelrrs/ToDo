@@ -8,11 +8,9 @@ import TodoForm from './../TodoForm/index';
 import moment from 'moment';
 import InfoIcon from '@material-ui/icons/Info';
 
-function Todo ( { todos, completeTodo, removeTodo, updateTodo } ) {
+function Todo ( { todos, removeTodo, updateTodo } ) {
 
     const styles = useStyles()
-
-
     const [ edit, setEdit ] = useState( {
         id: null,
         value: '',
@@ -33,12 +31,15 @@ function Todo ( { todos, completeTodo, removeTodo, updateTodo } ) {
     }
 
     if ( edit.id ) {
-        return <TodoForm edit={ edit } onSubmit={ submitUpdate } />
+        return <TodoForm edit={ edit } onSubmit={ submitUpdate }
+        />
     }
     return (
 
         todos.map( ( todo, index ) => (
-            <Container className={ styles.listaBody }>
+            <Container className={ styles.listaBody }
+                key={ index }
+            >
                 <CardTask
                     className={ styles.cardListado }
                     id={ todo.id }
@@ -59,7 +60,6 @@ function Todo ( { todos, completeTodo, removeTodo, updateTodo } ) {
                             className={ styles.icons }
                             onClick={ () => setEdit( { id: todo.id, value: todo.title, desc: todo.desc, date: todo.date } ) }
                         />
-
                     }
                 />
             </Container>

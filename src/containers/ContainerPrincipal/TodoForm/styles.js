@@ -30,10 +30,6 @@ const useStyles = makeStyles(() => ({
     color: 'white',
     borderStyle: 'solid',
   },
-  date: {
-    backgroundColor: '#93C0E4',
-    borderStyle: 'solid',
-  },
   icons: {
     padding: 10,
   },

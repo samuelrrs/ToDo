@@ -1,22 +1,20 @@
-import React, { useState/* , useRef, useEffect */ } from 'react'
-import AddBoxIcon from '@material-ui/icons/AddBox';
-import { Container, Typography } from '@material-ui/core';
-import useStyles from './styles';
-import ButtonDefault from '../../../components/ButtonDefault/index';
-import InputText from '../../../components/InputText/index';
-import { FormControlLabel } from '@material-ui/core';
-import Switch from '@material-ui/core/Switch';
-import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
+import { Container, FormControlLabel } from '@material-ui/core';
+import Switch from '@material-ui/core/Switch';
+import AddBoxIcon from '@material-ui/icons/AddBox';
+import React, { useState /* , useRef, useEffect */ } from 'react';
+import { useForm } from "react-hook-form";
+import ButtonDefault from '../../../components/ButtonDefault/index';
+import FieldForm from '../../../components/FieldForm/index';
 import { schemaValidation } from './../../../utils/validation/taskValidation';
+import useStyles from './styles';
+
 function TodoForm ( props ) {
 
     const [ title, setTitle ] = useState( props.edit ? props.edit.value : '' )
     const [ desc, setDesc ] = useState( props.edit ? props.edit.desc : '' )
     const [ date, setDate ] = useState( props.edit ? props.edit.date : '' )
     const [ isFavorite, setIsfavorite ] = useState( false );
-
-
 
     const { register, handleSubmit, errors } = useForm( {
         resolver: yupResolver( schemaValidation ),
@@ -39,11 +37,8 @@ function TodoForm ( props ) {
         setDesc( '' )
         setDate( '' )
         setIsfavorite( false )
-
         console.log( date )
     }
-
-
     const styles = useStyles()
 
     return (
@@ -51,7 +46,7 @@ function TodoForm ( props ) {
             onSubmit={ handleSubmit( formSubmit ) }>
             {props.edit ? (
                 <Container className={ styles.formedit }>
-                    <InputText
+                    <FieldForm
                         label='Edite sua tarefa...'
                         value={ title }
                         onChange={ event => setTitle( () => event.target.value ) }
@@ -59,7 +54,7 @@ function TodoForm ( props ) {
                         color="secondary"
                     />
                     <p>{ errors.title?.message }</p>
-                    <InputText
+                    <FieldForm
                         label='Edite a descrição'
                         name='desc'
                         value={ desc }
@@ -69,7 +64,7 @@ function TodoForm ( props ) {
                     />
                     <p>{ errors.desc?.message }</p>
 
-                    <InputText
+                    <FieldForm
                         value={ date }
                         name='date'
                         type="date"
@@ -82,36 +77,34 @@ function TodoForm ( props ) {
                     </ButtonDefault>
                 </Container>
             ) : (
-                    /*    INPUT SAVE  */
                     <Container className={ styles.form }>
-
-                        <InputText
+                        <FieldForm
                             label='Digite sua tarefa...'
                             value={ title }
                             onChange={ event => setTitle( event.target.value ) }
                             name='title'
                             inputRef={ register( { required: true } ) }
                             type={ "text" }
+                            errors={ errors }
                         />
-                        <Typography>{ errors.title?.message }</Typography>
 
-                        <InputText
+
+                        <FieldForm
                             label='Digite a descrição'
                             name='desc'
                             value={ desc }
                             inputRef={ register( { required: true } ) }
                             onChange={ event => setDesc( event.target.value ) }
+                            errors={ errors }
                         />
-                        <Typography>{ errors.desc?.message }</Typography>
 
-                        <InputText
-                            className={ styles.date }
+                        <FieldForm
                             value={ date }
                             name='date'
                             type="date"
                             onChange={ event => setDate( event.target.value ) }
+                            errors={ errors }
                         />
-                        <Typography>{ errors.date?.message }</Typography>
 
                         <FormControlLabel
                             className={ styles.switch }

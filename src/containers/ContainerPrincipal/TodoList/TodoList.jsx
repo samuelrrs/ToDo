@@ -37,18 +37,6 @@ function TodoList () {
         const removeArr = [ ...todos ].filter( todo => todo.id !== id )
         setTodos( removeArr )
     }
-
-
-
-    function completeTodo ( id ) {
-        let updatedTodos = todos.map( todo => {
-            if ( todo.id === id ) {
-                todo.isComplete = !todo.isComplete
-            }
-            return todo
-        } )
-        setTodos( updatedTodos )
-    }
     const styles = useStyles()
     return (
         <Container>
@@ -59,7 +47,6 @@ function TodoList () {
                 <TodoForm onSubmit={ addTodo } />
                 <Todo
                     todos={ todos }
-                    completeTodo={ completeTodo }
                     removeTodo={ removeTodo }
                     updateTodo={ updateTodo }
                 />
