@@ -30,16 +30,17 @@ export default function ActionsInAccordionSummary ( { id, title, desc, edit, rem
                         aria-label="Acknowledge"
                         onClick={ ( event ) => event.stopPropagation() }
                         onFocus={ ( event ) => event.stopPropagation() }
+
                         control={
-                            <Container className={ styles.info }>
-                                { remove }
-                                { edit }
-                            </Container>
+                            <Typography className={ styles.info }>{ title }</Typography>
                         }
                     />
                     <Container className={ styles.info }>
-                        <Typography >{ title }</Typography>
                         <Typography >{ date }</Typography>
+                    </Container>
+                    <Container>
+                        { remove }
+                        { edit }
                     </Container>
 
                     { favorite }

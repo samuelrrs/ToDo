@@ -24,6 +24,7 @@ const useStyles = makeStyles(() => ({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
+    paddingLeft: 15,
   },
   infoSec: {
     maxWidth: '100%',
