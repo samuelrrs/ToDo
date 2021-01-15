@@ -59,7 +59,6 @@ function TodoForm ( props ) {
                         name='desc'
                         value={ desc }
                         onChange={ event => setDesc( () => event.target.value ) }
-                        className={ styles.inputEdit }
                         color="secondary"
                     />
                     <p>{ errors.desc?.message }</p>
@@ -69,7 +68,6 @@ function TodoForm ( props ) {
                         name='date'
                         type="date"
                         onChange={ event => setDate( () => event.target.value ) }
-                        className={ styles.date }
                         error
                     />
                     <ButtonDefault onClick={ formSubmit } >
