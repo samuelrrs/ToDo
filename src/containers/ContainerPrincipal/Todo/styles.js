@@ -1,28 +1,38 @@
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(() => ({
-  lista: {
+  acordionPrincipal: {
     display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    margin: '8px 0',
-    color: '#fff',
-    backgroundColor: '#839bb7',
-    borderRadius: '5px',
-    padding: '10px',
+    flexDirection: 'column',
+    width: '70%',
+    backgroundColor: '#465166',
+    color: 'white',
+    marginTop: 5,
+    marginBottom: 5,
   },
-  listaBody: {
-    display: 'flex',
-    flexDirection: 'row',
+  descContainer: {
+    gap: 20,
+  },
+  desc: {
+    color: 'white',
   },
   icons: {
-    cursor: 'pointer',
     color: 'white',
-    padding: 5,
-  },
-  cardListado: {
     display: 'flex',
+    gap: 10,
+  },
+  info: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    paddingLeft: 15,
+  },
+  infoSec: {},
+  listaBody: {
+    alignItems: 'center',
+    display: 'flex',
+    justifyContent: 'center',
   },
 }))
 
