@@ -20,6 +20,7 @@ const useStyles = makeStyles(() => ({
     color: 'white',
     display: 'flex',
     gap: 10,
+    paddingLeft: 5,
   },
   info: {
     display: 'flex',

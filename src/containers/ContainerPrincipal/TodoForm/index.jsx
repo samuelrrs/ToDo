@@ -14,7 +14,7 @@ function TodoForm ( props ) {
     const [ title, setTitle ] = useState( props.edit ? props.edit.value : '' )
     const [ desc, setDesc ] = useState( props.edit ? props.edit.desc : '' )
     const [ date, setDate ] = useState( props.edit ? props.edit.date : '' )
-    const [ isFavorite, setIsfavorite ] = useState( false );
+    const [ isFavorite, setIsfavorite ] = useState( props.edit ? props.edit.importante : false );
 
     const { register, handleSubmit, errors } = useForm( {
         resolver: yupResolver( schemaValidation ),
@@ -28,10 +28,8 @@ function TodoForm ( props ) {
             title: title,
             desc: desc,
             date: date,
-            importante: isFavorite,
+            isFavorite: isFavorite,
         } )
-
-
 
         setTitle( '' )
         setDesc( '' )
@@ -47,28 +45,36 @@ function TodoForm ( props ) {
             {props.edit ? (
                 <Container className={ styles.formedit }>
                     <FieldForm
-                        label='Edite sua tarefa...'
+                        label='Altere sua tarefa...'
                         value={ title }
-                        onChange={ event => setTitle( () => event.target.value ) }
+                        onChange={ event => setTitle( event.target.value ) }
                         name='title'
-                        color="secondary"
+                        inputRef={ register( { required: true } ) }
+                        type={ "text" }
+                        errors={ errors }
                     />
-                    <p>{ errors.title?.message }</p>
                     <FieldForm
                         label='Edite a descrição'
                         name='desc'
                         value={ desc }
                         onChange={ event => setDesc( () => event.target.value ) }
                         color="secondary"
+                        errors={ errors }
                     />
-                    <p>{ errors.desc?.message }</p>
 
                     <FieldForm
                         value={ date }
                         name='date'
                         type="date"
                         onChange={ event => setDate( () => event.target.value ) }
-                        error
+                        errors={ errors }
+
+                    />
+                    <FormControlLabel
+                        className={ styles.switch }
+                        control={
+                            <Switch checked={ isFavorite } color="primary" onChange={ event => setIsfavorite( event.target.checked ) } name="checkedA" /> }
+                        label="Importante"
                     />
                     <ButtonDefault onClick={ formSubmit } >
                         Salvar alteração

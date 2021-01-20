@@ -23,7 +23,7 @@ export default function Todo ( { todos, removeTodo, updateTodo } ) {
         value: '',
         desc: '',
         date: '',
-        isFavorite: null
+        isFavorite: false
     } )
 
     function submitUpdate ( value, desc, date, isFavorite ) {
@@ -33,7 +33,7 @@ export default function Todo ( { todos, removeTodo, updateTodo } ) {
             value: '',
             desc: '',
             date: '',
-            isFavorite: null
+            isFavorite: false
         } )
     }
 
@@ -44,23 +44,23 @@ export default function Todo ( { todos, removeTodo, updateTodo } ) {
     return (
         todos.map( ( todo, index ) => (
             <Container className={ styles.listaBody }
+                key={ index }
             >
-                <Accordion className={ styles.acordionPrincipal }>
+                <Accordion expanded={ expanded === todo.id } onChange={ handleChange( todo.id ) } className={ styles.acordionPrincipal }>
                     <AccordionSummary
                         expandIcon={ <ExpandMoreIcon /> }
                         aria-label="Expand"
                         aria-controls="additional-actions1-content"
-                        id="additional-actions1-header"
+                        id={ todo.id }
                     >
-                        <FormControlLabel
-                            aria-label="Acknowledge"
-                            onClick={ ( event ) => event.stopPropagation() }
-                            onFocus={ ( event ) => event.stopPropagation() }
-                            control={ <InfoIcon
-                                onClick={ () => removeTodo( todo.id ) }
-                            /> }
-                            label=""
-                        />
+                        {
+                            todo.isFavorite && <FormControlLabel
+                                aria-label="Acknowledge"
+                                onClick={ ( event ) => event.stopPropagation() }
+                                onFocus={ ( event ) => event.stopPropagation() }
+                                control={ <InfoIcon className={ styles.icons } /> }
+                                label="" />
+                        }
 
                         <Container className={ styles.info }>
                             <Typography>{ todo.title }</Typography>
