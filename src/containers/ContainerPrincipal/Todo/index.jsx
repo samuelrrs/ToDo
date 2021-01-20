@@ -53,17 +53,15 @@ export default function Todo ( { todos, removeTodo, updateTodo } ) {
                         aria-controls="additional-actions1-content"
                         id={ todo.id }
                     >
-                        {
-                            todo.isFavorite && <FormControlLabel
-                                aria-label="Acknowledge"
-                                onClick={ ( event ) => event.stopPropagation() }
-                                onFocus={ ( event ) => event.stopPropagation() }
-                                control={ <InfoIcon className={ styles.important } /> }
-                                label="" />
-                        }
+                        <FormControlLabel
+                            aria-label="Acknowledge"
+                            onClick={ ( event ) => event.stopPropagation() }
+                            onFocus={ ( event ) => event.stopPropagation() }
+                            control={ <InfoIcon className={ styles.important } /> }
+                            label="" />
 
                         <Container className={ styles.info }>
-                            <Typography>{ todo.title }</Typography>
+                            <Typography className={ styles.text }>{ todo.title }</Typography>
                             <Typography >{ todo.date }</Typography>
                         </Container>
                         <Container className={ styles.icons }>
@@ -74,7 +72,11 @@ export default function Todo ( { todos, removeTodo, updateTodo } ) {
                                 className={ styles.icons }
                                 onClick={ () => setEdit( { id: todo.id, value: todo.title, desc: todo.desc, date: todo.date } ) }
                             />
+
                         </Container>
+                        {
+                            todo.isFavorite ? <InfoIcon className={ styles.important } /> : <InfoIcon className={ styles.iconfalse } />
+                        }
                     </AccordionSummary>
                     <AccordionDetails>
                         <Typography>
