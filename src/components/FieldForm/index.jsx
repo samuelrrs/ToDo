@@ -16,7 +16,7 @@ function FieldForm ( { name, errors, variant = 'outlined', ...rest } ) {
                 className={ styles.input }
                 { ...rest }
             />
-            { error && <Alert severity="error">{ error.message }</Alert> }
+            { error && <Alert severity="warning" className={ styles.alerta }>{ error.message }</Alert> }
         </>
 
     )
