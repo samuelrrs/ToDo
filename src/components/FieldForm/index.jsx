@@ -1,7 +1,7 @@
-import { Typography } from '@material-ui/core';
 import React from 'react';
 import useStyles from './styles';
 import TextField from '@material-ui/core/TextField';
+import Alert from '@material-ui/lab/Alert';
 
 function FieldForm ( { name, errors, variant = 'outlined', ...rest } ) {
 
@@ -16,7 +16,7 @@ function FieldForm ( { name, errors, variant = 'outlined', ...rest } ) {
                 className={ styles.input }
                 { ...rest }
             />
-            { error && <Typography>{ error.message }</Typography> }
+            { error && <Alert severity="error">{ error.message }</Alert> }
         </>
 
     )

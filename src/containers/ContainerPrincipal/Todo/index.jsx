@@ -8,7 +8,7 @@ import useStyles from './styles';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import { Container } from '@material-ui/core';
-import TodoForm from './../TodoForm/index';
+import TodoForm from "./../TodoForm/index";
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import InfoIcon from '@material-ui/icons/Info';
 export default function Todo ( { todos, removeTodo, updateTodo } ) {
@@ -58,7 +58,7 @@ export default function Todo ( { todos, removeTodo, updateTodo } ) {
                                 aria-label="Acknowledge"
                                 onClick={ ( event ) => event.stopPropagation() }
                                 onFocus={ ( event ) => event.stopPropagation() }
-                                control={ <InfoIcon className={ styles.icons } /> }
+                                control={ <InfoIcon className={ styles.important } /> }
                                 label="" />
                         }
 

@@ -22,12 +22,16 @@ const useStyles = makeStyles(() => ({
     gap: 10,
     paddingLeft: 5,
   },
+  important: {
+    fill: 'gold',
+    position: 'relative',
+  },
   info: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    paddingLeft: 15,
+    paddingLeft: 5,
   },
   infoSec: {},
   listaBody: {

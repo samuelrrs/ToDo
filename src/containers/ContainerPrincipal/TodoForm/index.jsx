@@ -6,7 +6,7 @@ import React, { useState /* , useRef, useEffect */ } from 'react';
 import { useForm } from "react-hook-form";
 import ButtonDefault from '../../../components/ButtonDefault/index';
 import FieldForm from '../../../components/FieldForm/index';
-import { schemaValidation } from './../../../utils/validation/taskValidation';
+import { schemaValidation } from './../../../utils/Validation/taskValidation';
 import useStyles from './styles';
 
 function TodoForm ( props ) {
