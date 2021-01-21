@@ -1,6 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Container, FormControlLabel } from '@material-ui/core';
-import Switch from '@material-ui/core/Switch';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import React, { useState /* , useRef, useEffect */ } from 'react';
 import { useForm } from "react-hook-form";
@@ -9,6 +8,8 @@ import FieldForm from '../../../components/FieldForm/index';
 import { schemaValidation } from './../../../utils/Validation/taskValidation';
 import useStyles from './styles';
 import Checkbox from '@material-ui/core/Checkbox';
+import Tooltip from '@material-ui/core/Tooltip';
+
 function TodoForm ( props ) {
 
     const [ title, setTitle ] = useState( props.edit ? props.edit.value : '' )
@@ -70,12 +71,6 @@ function TodoForm ( props ) {
                         errors={ errors }
 
                     />
-                    {/*  <FormControlLabel
-                        className={ styles.switch }
-                        control={
-                            <Switch checked={ isFavorite } color="primary" onChange={ event => setIsfavorite( event.target.checked ) } name="checkedA" icon={ <FavoriteBorderIcon /> } /> }
-                        label="Importante"
-                    /> */}
                     <ButtonDefault onClick={ formSubmit } >
                         Salvar alteração
                     </ButtonDefault>
@@ -111,7 +106,11 @@ function TodoForm ( props ) {
                         />
 
                         <FormControlLabel
-                            control={ <Checkbox checked={ isFavorite } onChange={ event => setIsfavorite( event.target.checked ) } name="checkedA" className={ styles.switch } /> }
+                            control={
+                                <Tooltip title={ <h2 style={ { fontSize: 14 } }>Essa informação não poderá ser alterada após a tarefa ser cadastrada !</h2> } placement="left">
+                                    <Checkbox checked={ isFavorite } onChange={ event => setIsfavorite( event.target.checked ) } name="checkedA" className={ styles.switch } />
+                                </Tooltip>
+                            }
                             label="Importante"
                             className={ styles.switch }
 
