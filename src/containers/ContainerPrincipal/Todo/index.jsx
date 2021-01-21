@@ -11,6 +11,8 @@ import { Container } from '@material-ui/core';
 import TodoForm from "./../TodoForm/index";
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import InfoIcon from '@material-ui/icons/Info';
+import AssignmentIcon from '@material-ui/icons/Assignment';
+import moment from 'moment';
 export default function Todo ( { todos, removeTodo, updateTodo } ) {
     const styles = useStyles();
     const [ expanded, setExpanded ] = useState( false );
@@ -53,16 +55,16 @@ export default function Todo ( { todos, removeTodo, updateTodo } ) {
                         aria-controls="additional-actions1-content"
                         id={ todo.id }
                     >
-                        <FormControlLabel
-                            aria-label="Acknowledge"
-                            onClick={ ( event ) => event.stopPropagation() }
-                            onFocus={ ( event ) => event.stopPropagation() }
-                            control={ <InfoIcon className={ styles.important } /> }
-                            label="" />
-
                         <Container className={ styles.info }>
+                            <FormControlLabel
+                                aria-label="Acknowledge"
+                                onClick={ ( event ) => event.stopPropagation() }
+                                onFocus={ ( event ) => event.stopPropagation() }
+                                control={ <AssignmentIcon /> }
+                                label="" />
+
                             <Typography className={ styles.text }>{ todo.title }</Typography>
-                            <Typography >{ todo.date }</Typography>
+                            <Typography >{ moment( todo.date ).format( 'DD/MM/YYYY' ) }</Typography>
                         </Container>
                         <Container className={ styles.icons }>
                             <DeleteIcon

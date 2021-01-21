@@ -70,12 +70,12 @@ function TodoForm ( props ) {
                         errors={ errors }
 
                     />
-                    <FormControlLabel
+                    {/*  <FormControlLabel
                         className={ styles.switch }
                         control={
-                            <Switch checked={ isFavorite } color="primary" onChange={ event => setIsfavorite( event.target.checked ) } name="checkedA" /> }
+                            <Switch checked={ isFavorite } color="primary" onChange={ event => setIsfavorite( event.target.checked ) } name="checkedA" icon={ <FavoriteBorderIcon /> } /> }
                         label="Importante"
-                    />
+                    /> */}
                     <ButtonDefault onClick={ formSubmit } >
                         Salvar alteração
                     </ButtonDefault>
