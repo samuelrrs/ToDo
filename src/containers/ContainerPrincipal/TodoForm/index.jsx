@@ -8,7 +8,7 @@ import ButtonDefault from '../../../components/ButtonDefault/index';
 import FieldForm from '../../../components/FieldForm/index';
 import { schemaValidation } from './../../../utils/Validation/taskValidation';
 import useStyles from './styles';
-
+import Checkbox from '@material-ui/core/Checkbox';
 function TodoForm ( props ) {
 
     const [ title, setTitle ] = useState( props.edit ? props.edit.value : '' )
@@ -111,10 +111,10 @@ function TodoForm ( props ) {
                         />
 
                         <FormControlLabel
-                            className={ styles.switch }
-                            control={
-                                <Switch checked={ isFavorite } color="primary" onChange={ event => setIsfavorite( event.target.checked ) } name="checkedA" /> }
+                            control={ <Checkbox checked={ isFavorite } onChange={ event => setIsfavorite( event.target.checked ) } name="checkedA" className={ styles.switch } /> }
                             label="Importante"
+                            className={ styles.switch }
+
                         />
                         <ButtonDefault
                             color={ 'primary' }
