@@ -13,6 +13,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import InfoIcon from '@material-ui/icons/Info';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import moment from 'moment';
+import Tooltip from '@material-ui/core/Tooltip';
 export default function Todo ( { todos, removeTodo, updateTodo } ) {
     const styles = useStyles();
     const [ expanded, setExpanded ] = useState( false );
@@ -77,7 +78,12 @@ export default function Todo ( { todos, removeTodo, updateTodo } ) {
 
                         </Container>
                         {
-                            todo.isFavorite ? <InfoIcon className={ styles.important } /> : <InfoIcon className={ styles.iconfalse } />
+                            todo.isFavorite ?
+                                <Tooltip title={ <h2 style={ { fontSize: 14 } }>Essa tarefa é importante</h2> } placement="right-start">
+                                    <InfoIcon className={ styles.important } />
+                                </Tooltip>
+                                :
+                                <InfoIcon className={ styles.iconfalse } />
                         }
                     </AccordionSummary>
                     <AccordionDetails>

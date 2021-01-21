@@ -41,6 +41,9 @@ const useStyles = makeStyles(() => ({
   content: {
     alignItems: 'center',
   },
+  dica: {
+    fontSize: 30,
+  },
 }))
 
 export default useStyles
