@@ -9,14 +9,17 @@ import { schemaValidation } from './../../../utils/Validation/taskValidation';
 import useStyles from './styles';
 import Checkbox from '@material-ui/core/Checkbox';
 import Tooltip from '@material-ui/core/Tooltip';
+import Dialog from '@material-ui/core/Dialog';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 function TodoForm ( props ) {
 
     const [ title, setTitle ] = useState( props.edit ? props.edit.value : '' )
     const [ desc, setDesc ] = useState( props.edit ? props.edit.desc : '' )
     const [ date, setDate ] = useState( props.edit ? props.edit.date : '' )
-    const [ isFavorite, setIsfavorite ] = useState( props.edit ? props.edit.importante : false );
-
+    const [ isFavorite, setIsfavorite ] = useState();
     const { register, handleSubmit, errors } = useForm( {
         resolver: yupResolver( schemaValidation ),
         reValidateMode: 'onBlur'
@@ -31,50 +34,61 @@ function TodoForm ( props ) {
             date: date,
             isFavorite: isFavorite,
         } )
-
         setTitle( '' )
         setDesc( '' )
         setDate( '' )
-        setIsfavorite( false )
-        console.log( date )
     }
     const styles = useStyles()
-
     return (
         <form
             onSubmit={ handleSubmit( formSubmit ) }>
             {props.edit ? (
-                <Container className={ styles.formedit }>
-                    <FieldForm
-                        label='Altere sua tarefa...'
-                        value={ title }
-                        onChange={ event => setTitle( event.target.value ) }
-                        name='title'
-                        inputRef={ register( { required: true } ) }
-                        type={ "text" }
-                        errors={ errors }
-                    />
-                    <FieldForm
-                        label='Edite a descrição'
-                        name='desc'
-                        value={ desc }
-                        onChange={ event => setDesc( () => event.target.value ) }
-                        color="secondary"
-                        errors={ errors }
-                    />
+                <Dialog
+                    open={ props.edit ? true : false }
+                    onClose={ props.edit ? false : true }
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                    className={ styles.modal }
+                >
+                    <DialogTitle className={ styles.modal } id="alert-dialog-title">{ "Deseja realizar alguma alteração ?" }</DialogTitle>
+                    <DialogContent
+                        className={ styles.modal }
+                    >
+                        <DialogContentText id="alert-dialog-description">
+                            <Container className={ styles.formedit }>
+                                <FieldForm
+                                    label='Altere sua tarefa...'
+                                    value={ title }
+                                    onChange={ event => setTitle( event.target.value ) }
+                                    name='title'
+                                    inputRef={ register( { required: true } ) }
+                                    type={ "text" }
+                                    errors={ errors }
+                                />
+                                <FieldForm
+                                    label='Edite a descrição'
+                                    name='desc'
+                                    value={ desc }
+                                    onChange={ event => setDesc( () => event.target.value ) }
+                                    color="secondary"
+                                    errors={ errors }
+                                />
 
-                    <FieldForm
-                        value={ date }
-                        name='date'
-                        type="date"
-                        onChange={ event => setDate( () => event.target.value ) }
-                        errors={ errors }
+                                <FieldForm
+                                    value={ date }
+                                    name='date'
+                                    type="date"
+                                    onChange={ event => setDate( () => event.target.value ) }
+                                    errors={ errors }
 
-                    />
-                    <ButtonDefault onClick={ formSubmit } >
-                        Salvar alteração
-                    </ButtonDefault>
-                </Container>
+                                />
+                                <ButtonDefault onClick={ formSubmit } >
+                                    Salvar alteração
+                                 </ButtonDefault>
+                            </Container>
+                        </DialogContentText>
+                    </DialogContent>
+                </Dialog>
             ) : (
                     <Container className={ styles.form }>
                         <FieldForm
@@ -86,8 +100,6 @@ function TodoForm ( props ) {
                             type={ "text" }
                             errors={ errors }
                         />
-
-
                         <FieldForm
                             label='Digite a descrição'
                             name='desc'
@@ -102,6 +114,7 @@ function TodoForm ( props ) {
                             name='date'
                             type="date"
                             onChange={ event => setDate( event.target.value ) }
+                            required="true"
                             errors={ errors }
                         />
 

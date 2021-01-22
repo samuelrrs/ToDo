@@ -8,7 +8,7 @@ const useStyles = makeStyles(() => ({
     alignItems: 'center',
     margin: '8px 0',
     color: '#fff',
-    backgroundColor: '#839bb7',
+    backgroundColor: '#141A2C',
     borderRadius: '5px',
     padding: '10px',
   },
@@ -31,6 +31,12 @@ const useStyles = makeStyles(() => ({
   },
   icons: {
     padding: 10,
+  },
+  modal: {
+    color: 'white',
+    '& div.MuiPaper-root': {
+      backgroundColor: '#061b38',
+    },
   },
 }))
 
