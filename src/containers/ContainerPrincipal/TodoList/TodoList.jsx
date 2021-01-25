@@ -5,6 +5,14 @@ import TodoForm from './../TodoForm/index';
 import Todo from './../Todo/index';
 
 function TodoList () {
+    const [ edit, setEdit ] = useState( {
+        id: null,
+        value: '',
+        desc: '',
+        date: '',
+        isFavorite: false
+    } )
+
     const [ todos, setTodos ] = useState( [] )
     useEffect( () => {
         const todoStorage = localStorage.getItem( 'tasks' )
@@ -17,21 +25,31 @@ function TodoList () {
     }, [ todos ] )
 
     function addTodo ( todo ) {
-        if ( !todo.title || /^\s*$/.test( todo.title ) ) {
-            return
+        if ( todo.edit ) {
+            editTask( todo )
+        } else {
+            const newTodos = [ todo, ...todos ]
+            setTodos( newTodos )
         }
 
-        const newTodos = [ todo, ...todos ]
+    }
+    function updateTodo ( todo ) {
+        setEdit( {
+            id: todo.id,
+            value: todo.value,
+            desc: todo.desc,
+            date: todo.date,
+            isFavorite: todo.isFavorite
+        } )
+    }
+
+    function editTask ( object ) {
+        const newTodos = todos.map( todo => ( todo.id === object.id ? { id: object.id, title: object.title, desc: object.desc, date: object.date, isFavorite: object.isFavorite } : todo ) )
+        localStorage.clear()
+        localStorage.setItem( 'tasks', JSON.stringify( newTodos ) )
         setTodos( newTodos )
-        console.log( ...todos )
     }
 
-    function updateTodo ( todoId, newValue ) {
-        if ( !newValue.title || /^\s*$/.test( newValue.title ) ) {
-            return
-        }
-        setTodos( prev => prev.map( item => ( item.id === todoId ? newValue : item ) ) )
-    }
 
     function removeTodo ( id ) {
         const removeArr = [ ...todos ].filter( todo => todo.id !== id )
@@ -40,11 +58,9 @@ function TodoList () {
     const styles = useStyles()
     return (
         <Container>
-
-
             <Container className={ styles.container }>
                 <Typography className={ styles.title }>Qual sua rotina pra hoje ?</Typography>
-                <TodoForm onSubmit={ addTodo } />
+                <TodoForm onSubmit={ addTodo } edit={ edit } />
                 <Todo
                     todos={ todos }
                     removeTodo={ removeTodo }

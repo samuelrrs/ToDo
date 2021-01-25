@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
@@ -8,7 +8,6 @@ import useStyles from './styles';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import { Container } from '@material-ui/core';
-import TodoForm from "./../TodoForm/index";
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import InfoIcon from '@material-ui/icons/Info';
 import AssignmentIcon from '@material-ui/icons/Assignment';
@@ -17,6 +16,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 export default function Todo ( { todos, removeTodo, updateTodo } ) {
     const styles = useStyles();
     const [ expanded, setExpanded ] = useState( false );
+    const [ editState, setEditState ] = useState( false )
     const handleChange = ( panel ) => ( event, isExpanded ) => {
         setExpanded( isExpanded ? panel : false );
     };
@@ -29,21 +29,13 @@ export default function Todo ( { todos, removeTodo, updateTodo } ) {
         isFavorite: false
     } )
 
-    function submitUpdate ( value, desc, date, isFavorite ) {
-        updateTodo( edit.id, value, desc, date, isFavorite )
-        setEdit( {
-            id: null,
-            value: '',
-            desc: '',
-            date: '',
-            isFavorite: false
-        } )
-    }
+    useEffect( () => {
+        if ( editState ) {
+            updateTodo( edit )
+            setEditState( false )
+        }
+    }, [ edit, updateTodo, editState ] )
 
-    if ( edit.id ) {
-        return <TodoForm edit={ edit } onSubmit={ submitUpdate }
-        />
-    }
     return (
         todos.map( ( todo, index ) => (
             <Container className={ styles.listaBody }
@@ -73,7 +65,10 @@ export default function Todo ( { todos, removeTodo, updateTodo } ) {
                             />
                             <EditIcon
                                 className={ styles.icons }
-                                onClick={ () => setEdit( { id: todo.id, value: todo.title, desc: todo.desc, date: todo.date } ) }
+                                onClick={ () => {
+                                    setEditState( true )
+                                    setEdit( { id: todo.id, value: todo.title, desc: todo.desc, date: todo.date, isFavorite: todo.isFavorite } )
+                                } }
                             />
 
                         </Container>

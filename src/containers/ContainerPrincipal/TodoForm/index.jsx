@@ -1,7 +1,8 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Container, FormControlLabel } from '@material-ui/core';
 import AddBoxIcon from '@material-ui/icons/AddBox';
-import React, { useState /* , useRef, useEffect */ } from 'react';
+import EditIcon from '@material-ui/icons/Edit';
+import React, { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import ButtonDefault from '../../../components/ButtonDefault/index';
 import FieldForm from '../../../components/FieldForm/index';
@@ -12,10 +13,12 @@ import Tooltip from '@material-ui/core/Tooltip';
 
 function TodoForm ( props ) {
 
-    const [ title, setTitle ] = useState( props.edit ? props.edit.value : '' )
-    const [ desc, setDesc ] = useState( props.edit ? props.edit.desc : '' )
-    const [ date, setDate ] = useState( props.edit ? props.edit.date : '' )
-    const [ isFavorite, setIsfavorite ] = useState( props.edit ? props.edit.importante : false );
+    const [ title, setTitle ] = useState( '' )
+    const [ desc, setDesc ] = useState( '' )
+    const [ date, setDate ] = useState( '' )
+    const [ isFavorite, setIsfavorite ] = useState( false );
+
+    const [ isEdit, setIsEdit ] = useState( false )
 
     const { register, handleSubmit, errors } = useForm( {
         resolver: yupResolver( schemaValidation ),
@@ -25,106 +28,83 @@ function TodoForm ( props ) {
     function formSubmit () {
 
         props.onSubmit( {
-            id: Math.floor( Math.random() * 1000 ),
+            id: props.edit.id !== null ? props.edit.id : Math.floor( Math.random() * 1000 ),
             title: title,
             desc: desc,
             date: date,
             isFavorite: isFavorite,
+            edit: props.edit.id !== null ? true : false
         } )
-
         setTitle( '' )
         setDesc( '' )
         setDate( '' )
         setIsfavorite( false )
-        console.log( date )
+        setIsEdit( false )
+        props.edit.id = null
     }
-    const styles = useStyles()
 
+    useEffect( () => {
+        setTitle( props.edit ? props.edit.value : '' )
+        setDesc( props.edit ? props.edit.desc : '' )
+        setDate( props.edit ? props.edit.date : '' )
+        setIsfavorite( props.edit ? props.edit.isFavorite : false )
+        if ( props.edit.id !== null ) {
+            setIsEdit( true )
+        }
+    }, [ props.edit ] )
+
+    const styles = useStyles()
     return (
         <form
             onSubmit={ handleSubmit( formSubmit ) }>
-            {props.edit ? (
-                <Container className={ styles.formedit }>
-                    <FieldForm
-                        label='Altere sua tarefa...'
-                        value={ title }
-                        onChange={ event => setTitle( event.target.value ) }
-                        name='title'
-                        inputRef={ register( { required: true } ) }
-                        type={ "text" }
-                        errors={ errors }
-                    />
-                    <FieldForm
-                        label='Edite a descrição'
-                        name='desc'
-                        value={ desc }
-                        onChange={ event => setDesc( () => event.target.value ) }
-                        color="secondary"
-                        errors={ errors }
-                    />
+            <Container className={ styles.form }>
+                <FieldForm
+                    label='Digite sua tarefa...'
+                    value={ title }
+                    onChange={ event => setTitle( event.target.value ) }
+                    name='title'
+                    inputRef={ register( { required: true } ) }
+                    type={ "text" }
+                    errors={ errors }
+                />
+                <FieldForm
+                    label='Digite a descrição'
+                    name='desc'
+                    value={ desc }
+                    inputRef={ register( { required: true } ) }
+                    onChange={ event => setDesc( event.target.value ) }
+                    errors={ errors }
+                />
+                <FieldForm
+                    value={ date }
+                    name='date'
+                    type="date"
+                    onChange={ event => setDate( event.target.value ) }
+                    errors={ errors }
+                />
+                <FormControlLabel
+                    control={
+                        <Tooltip title={ <h2 style={ { fontSize: 14 } }>Essa informação não poderá ser alterada após a tarefa ser cadastrada !</h2> } placement="left">
+                            <Checkbox checked={ isFavorite } value={ isFavorite } onChange={ event => setIsfavorite( event.target.checked ) } name="checkedA" className={ styles.switch } />
+                        </Tooltip>
+                    }
+                    label="Importante"
+                    className={ styles.switch }
 
-                    <FieldForm
-                        value={ date }
-                        name='date'
-                        type="date"
-                        onChange={ event => setDate( () => event.target.value ) }
-                        errors={ errors }
+                />
+                <ButtonDefault
+                    color={ 'primary' }
+                    type={ 'submit' }
+                    onClick={ handleSubmit }
+                    className={ styles.button } >
+                    {
+                        isEdit ? <EditIcon /> : <AddBoxIcon />
+                    }
 
-                    />
-                    <ButtonDefault onClick={ formSubmit } >
-                        Salvar alteração
-                    </ButtonDefault>
-                </Container>
-            ) : (
-                    <Container className={ styles.form }>
-                        <FieldForm
-                            label='Digite sua tarefa...'
-                            value={ title }
-                            onChange={ event => setTitle( event.target.value ) }
-                            name='title'
-                            inputRef={ register( { required: true } ) }
-                            type={ "text" }
-                            errors={ errors }
-                        />
+                </ButtonDefault>
 
+            </Container>
 
-                        <FieldForm
-                            label='Digite a descrição'
-                            name='desc'
-                            value={ desc }
-                            inputRef={ register( { required: true } ) }
-                            onChange={ event => setDesc( event.target.value ) }
-                            errors={ errors }
-                        />
-
-                        <FieldForm
-                            value={ date }
-                            name='date'
-                            type="date"
-                            onChange={ event => setDate( event.target.value ) }
-                            errors={ errors }
-                        />
-
-                        <FormControlLabel
-                            control={
-                                <Tooltip title={ <h2 style={ { fontSize: 14 } }>Essa informação não poderá ser alterada após a tarefa ser cadastrada !</h2> } placement="left">
-                                    <Checkbox checked={ isFavorite } onChange={ event => setIsfavorite( event.target.checked ) } name="checkedA" className={ styles.switch } />
-                                </Tooltip>
-                            }
-                            label="Importante"
-                            className={ styles.switch }
-
-                        />
-                        <ButtonDefault
-                            color={ 'primary' }
-                            type={ 'submit' }
-                            onClick={ handleSubmit }
-                            className={ styles.button } >
-                            <AddBoxIcon />
-                        </ButtonDefault>
-
-                    </Container>
-                ) }
         </form>
     )
 }
