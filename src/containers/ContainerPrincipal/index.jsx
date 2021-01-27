@@ -8,14 +8,17 @@ import useStyles from './styles';
 import Header from './../../components/Header/index';
 
 const ContainerPrincipal = () => {
+
     const styles = useStyles()
     return (
         <TaskListContextProvider>
-            <Container className={styles.containerCard}>
+            <Container className={ styles.containerCard }>
                 <Header />
-                <Container className={styles.cardBackground}>
-                    <Container className={styles.main}>
-                        <Typography className={styles.title}>Qual sua rotina para hoje ?</Typography>
+                <Container className={ styles.cardBackground }>
+                    <Container className={ styles.main }>
+                        <Typography className={ styles.title }>
+                            Qual sua rotina para hoje ?
+                            </Typography>
                         <TaskForm />
                         <TodoList />
 

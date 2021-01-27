@@ -93,12 +93,18 @@ const TaskForm = () => {
           label="Importante"
           className={ styles.switch } />
 
-        <ButtonDefault type="submit" className={ styles.buttons }>
-          { editItem ? 'Salvar alteração' : <AddIcon /> }
+        <Container className={ styles.buttons }>
+          <ButtonDefault type="submit" >
+            { editItem ? 'Salvar alteração' : <AddIcon /> }
+          </ButtonDefault>
+          <ButtonDefault onClick={ clearList }>
+            Apagar tarefas
         </ButtonDefault>
-        <ButtonDefault onClick={ clearList }>
-          Limpar dados
-        </ButtonDefault>
+
+        </Container>
+
+
+
       </Container>
 
     </form>

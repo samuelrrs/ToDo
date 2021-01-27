@@ -24,7 +24,6 @@ const useStyles = makeStyles(() => ({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 15,
-    background: '#ec5990',
   },
   switch: {
     color: 'white',

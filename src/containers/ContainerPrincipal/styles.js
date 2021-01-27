@@ -4,7 +4,7 @@ const useStyles = makeStyles(() => ({
   containerCard: {
     width: '100%',
     display: 'flex',
-    marginTop: 25,
+    marginTop: 58,
     justifyContent: 'center',
     alignItems: 'center',
   },
