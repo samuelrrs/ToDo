@@ -2,15 +2,16 @@ import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(() => ({
   acordionPrincipal: {
-    width: '70%',
+    width: '100%',
     backgroundColor: '#465166',
     color: 'white',
     marginTop: 5,
-    marginBottom: 5,
+    marginBottom: 15,
   },
   descContainer: {},
   desc: {
     color: 'white',
+    width: '50%',
   },
   icons: {
     color: 'white',

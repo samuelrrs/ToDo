@@ -146,3 +146,7 @@ table {
 .custom-shape-divider-bottom-1610045505 .shape-fill {
   fill: #1b10106e;
 }
+
+* {
+  color: 'white';
+}

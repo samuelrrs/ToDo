@@ -1,14 +1,12 @@
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(() => ({
-  title: {
-    margin: '2px 0',
-    color: 'white',
-    fontSize: '24px',
-    padding: '35px',
-  },
-  logo: {
-    width: '60%',
+  noTask: {
+    color: 'gray',
+    textAlign: 'center',
+    fontSize: '18px',
+    marginTop: '20px',
+    marginBottom: '20px',
   },
 }))
 
