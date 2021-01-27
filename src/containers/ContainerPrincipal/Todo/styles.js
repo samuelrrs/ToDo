@@ -2,15 +2,17 @@ import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(() => ({
   acordionPrincipal: {
-    width: '70%',
+    width: '100%',
     backgroundColor: '#465166',
     color: 'white',
-    marginTop: 5,
-    marginBottom: 5,
+    marginTop: 10,
+    marginBottom: 10,
   },
   descContainer: {},
   desc: {
     color: 'white',
+    width: '90%',
+    wordBreak: 'break-all',
   },
   icons: {
     color: 'white',
@@ -28,7 +30,10 @@ const useStyles = makeStyles(() => ({
     justifyContent: 'space-between',
   },
   text: {
-    maxWidth: '50%',
+    color: 'white',
+  },
+  textContainer: {
+    width: 480,
   },
   iconfalse: {
     opacity: 0,
@@ -40,6 +45,11 @@ const useStyles = makeStyles(() => ({
   },
   content: {
     alignItems: 'center',
+  },
+  divider: {
+    padding: 0.5,
+    marginRight: 5,
+    marginLeft: 5,
   },
 }))
 

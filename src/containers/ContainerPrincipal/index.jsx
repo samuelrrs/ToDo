@@ -1,16 +1,31 @@
 import React from 'react'
-import useStyles from './styles';
-import { Container } from '@material-ui/core';
-import TodoList from './TodoList/TodoList';
 
-function ContainerPrincipal () {
+import { Container, Typography } from '@material-ui/core'
+import TaskListContextProvider from '../../contexts/TaskListContext'
+import TaskForm from './TodoForm/index';
+import TodoList from './TodoList/index';
+import useStyles from './styles';
+import Header from './../../components/Header/index';
+
+const ContainerPrincipal = () => {
 
     const styles = useStyles()
     return (
-        <Container className={ styles.container }>
-            <TodoList />
-        </Container>
+        <TaskListContextProvider>
+            <Container className={ styles.containerCard }>
+                <Header />
+                <Container className={ styles.cardBackground }>
+                    <Container className={ styles.main }>
+                        <Typography className={ styles.title }>
+                            Qual sua rotina para hoje ?
+                            </Typography>
+                        <TaskForm />
+                        <TodoList />
 
+                    </Container>
+                </Container>
+            </Container>
+        </TaskListContextProvider>
     )
 }
 

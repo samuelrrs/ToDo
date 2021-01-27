@@ -11,7 +11,7 @@ const useStyles = makeStyles(() => ({
       borderColor: 'white',
     },
     '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
-      borderColor: 'gray',
+      borderColor: 'white',
     },
     '& .MuiOutlinedInput-input': {
       color: 'white',
@@ -26,7 +26,7 @@ const useStyles = makeStyles(() => ({
       color: 'white',
     },
     '&:hover .MuiInputLabel-outlined': {
-      color: 'gray',
+      color: 'white',
     },
     '& .MuiInputLabel-outlined.Mui-focused': {
       color: 'white',

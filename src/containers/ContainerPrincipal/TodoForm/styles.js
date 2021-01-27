@@ -8,21 +8,20 @@ const useStyles = makeStyles(() => ({
     alignItems: 'center',
     margin: '8px 0',
     color: '#fff',
-    backgroundColor: '#839bb7',
     borderRadius: '5px',
     padding: '10px',
   },
   form: {
     display: 'flex',
     flexDirection: 'column',
+    justifyContent: 'center',
     alignItems: 'center',
-    margin: '8px 0',
-    padding: '10px',
+    marginBottom: '10px',
     gap: '20px',
   },
-  formedit: {
+  buttons: {
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'row',
     alignItems: 'center',
     gap: 15,
   },
@@ -31,6 +30,10 @@ const useStyles = makeStyles(() => ({
   },
   icons: {
     padding: 10,
+  },
+  tooltip: {
+    fill: 'gold',
+    paddingLeft: 5,
   },
 }))
 

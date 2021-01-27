@@ -1,9 +1,9 @@
+import React from 'react'
 import './assets/global/styles.css'
-import Main from './pages/Main/index';
-function App() {
-  return (
-      <Main/> 
-  );
+import Main from './pages/Main/index'
+
+const App = () => {
+  return <Main />
 }
 
-export default App;
+export default App
