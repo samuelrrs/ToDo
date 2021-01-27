@@ -32,6 +32,10 @@ const useStyles = makeStyles(() => ({
   icons: {
     padding: 10,
   },
+  tooltip: {
+    fill: 'gold',
+    paddingLeft: 5,
+  },
 }))
 
 export default useStyles

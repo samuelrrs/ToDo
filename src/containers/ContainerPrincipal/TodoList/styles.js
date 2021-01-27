@@ -8,6 +8,22 @@ const useStyles = makeStyles(() => ({
     marginTop: '20px',
     marginBottom: '20px',
   },
+  list: {
+    width: '90%',
+    margin: 'auto',
+    maxHeight: '300px',
+    overflow: 'hidden',
+    overflowY: 'auto',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  listItem: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    margin: '20px 0',
+    paddingBottom: '5px',
+    flexDirection: 'column',
+  },
 }))
 
 export default useStyles
