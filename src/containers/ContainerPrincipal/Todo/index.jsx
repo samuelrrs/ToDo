@@ -14,7 +14,7 @@ import InfoIcon from '@material-ui/icons/Info';
 import NewReleasesIcon from '@material-ui/icons/NewReleases';
 import moment from 'moment';
 import Tooltip from '@material-ui/core/Tooltip';
-import Divider from '@material-ui/core/Divider';
+import Divide from './../../../components/Divide/index';
 
 const Todo = ( { task } ) => {
   const { removeTask, findItem, editItem } = useContext( TaskListContext )
@@ -49,15 +49,15 @@ const Todo = ( { task } ) => {
                 </Tooltip>
               }
               label="" />
-            <Divider orientation="vertical" flexItem className={ styles.divider } />
+            <Divide />
 
             <Container className={ styles.textContainer }>
               <Typography>{ task.title }</Typography>
             </Container>
 
-            <Divider orientation="vertical" flexItem className={ styles.divider } />
+            <Divide />
             <Typography >{ moment( task.date ).format( 'DD/MM/YYYY' ) }</Typography>
-            <Divider orientation="vertical" flexItem className={ styles.divider } />
+            <Divide />
 
           </Container>
           {
@@ -72,6 +72,7 @@ const Todo = ( { task } ) => {
               <Tooltip title={ <h2 style={ { fontSize: 14 } }>Essa tarefa é importante !</h2> } placement="right-start">
                 <NewReleasesIcon className={ styles.important } />
               </Tooltip>
+
               :
               <Tooltip title={ <h2 style={ { fontSize: 14 } }>Tarefa simples :D</h2> } placement="right-start">
                 <InfoIcon className={ styles.iconfalse } />

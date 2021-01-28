@@ -14,36 +14,26 @@ const TaskListContextProvider = (props) => {
 
   const [editItem, setEditItem] = useState(null)
 
-  // Add tasks
   const addTask = (title, desc, date, isFavorite) => {
     setTasks([...tasks, { title, id: uuid(), desc, date, isFavorite }])
-    console.log(tasks)
   }
 
-  // Remove tasks
   const removeTask = (id) => {
     setTasks(tasks.filter((task) => task.id !== id))
   }
 
-  // Clear tasks
   const clearList = () => {
     setTasks([])
   }
 
-  // Find task
   const findItem = (id) => {
     const item = tasks.find((task) => task.id === id)
 
     setEditItem(item)
   }
 
-  // Edit task
   const editTask = (title, id, desc, date, isFavorite) => {
-    const newTasks = tasks.map((task) =>
-      task.id === id ? { title, id, desc, date, isFavorite } : task
-    )
-
-    console.log(newTasks)
+    const newTasks = tasks.map((task) => (task.id === id ? { title, id, desc, date, isFavorite } : task))
 
     setTasks(newTasks)
     setEditItem(null)
