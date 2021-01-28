@@ -21,7 +21,7 @@ const useStyles = makeStyles(() => ({
   },
   buttons: {
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
     alignItems: 'center',
     gap: 15,
   },

@@ -36,7 +36,7 @@ const useStyles = makeStyles(() => ({
     width: 480,
   },
   iconfalse: {
-    opacity: 0,
+    opacity: '0.1',
   },
   listaBody: {
     alignItems: 'center',
@@ -50,6 +50,7 @@ const useStyles = makeStyles(() => ({
     padding: 0.5,
     marginRight: 5,
     marginLeft: 5,
+    backgroundColor: 'white',
   },
 }))
 

@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react'
 import { TaskListContext } from './../../../contexts/TaskListContext';
-
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
@@ -12,7 +11,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import { Container } from '@material-ui/core';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import InfoIcon from '@material-ui/icons/Info';
-import AssignmentIcon from '@material-ui/icons/Assignment';
+import NewReleasesIcon from '@material-ui/icons/NewReleases';
 import moment from 'moment';
 import Tooltip from '@material-ui/core/Tooltip';
 import Divider from '@material-ui/core/Divider';
@@ -41,8 +40,16 @@ const Todo = ( { task } ) => {
               aria-label="Acknowledge"
               onClick={ ( event ) => event.stopPropagation() }
               onFocus={ ( event ) => event.stopPropagation() }
-              control={ <AssignmentIcon /> }
+              control={
+                <Tooltip title={ <h2 style={ { fontSize: 14 } }>Editar tarefa ?</h2> } placement="left-start">
+                  <EditIcon
+                    className={ styles.icons }
+                    onClick={ () => { findItem( task.id ); setExpanded( false ) } }
+                  />
+                </Tooltip>
+              }
               label="" />
+            <Divider orientation="vertical" flexItem className={ styles.divider } />
 
             <Container className={ styles.textContainer }>
               <Typography>{ task.title }</Typography>
@@ -53,31 +60,22 @@ const Todo = ( { task } ) => {
             <Divider orientation="vertical" flexItem className={ styles.divider } />
 
           </Container>
-
-
-
           {
             editItem ? '' : <Container className={ styles.icons }>
-
               <DeleteIcon
                 onClick={ () => removeTask( task.id ) }
               />
-              <EditIcon
-                className={ styles.icons }
-                onClick={ () => findItem( task.id ) }
-              />
             </Container>
           }
-
-
           {
             task.isFavorite ?
-              <Tooltip title={ <h2 style={ { fontSize: 14 } }>Essa tarefa é importante</h2> } placement="right-start">
-                <InfoIcon className={ styles.important } />
+              <Tooltip title={ <h2 style={ { fontSize: 14 } }>Essa tarefa é importante !</h2> } placement="right-start">
+                <NewReleasesIcon className={ styles.important } />
               </Tooltip>
-
               :
-              <InfoIcon className={ styles.iconfalse } />
+              <Tooltip title={ <h2 style={ { fontSize: 14 } }>Tarefa simples :D</h2> } placement="right-start">
+                <InfoIcon className={ styles.iconfalse } />
+              </Tooltip>
           }
         </AccordionSummary>
         <AccordionDetails className={ styles.desc }>
@@ -86,8 +84,6 @@ const Todo = ( { task } ) => {
           </Typography>
         </AccordionDetails>
       </Accordion>
-
-
     </Container>
   )
 }

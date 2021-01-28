@@ -13,7 +13,7 @@ import InfoIcon from '@material-ui/icons/Info';
 
 import useStyles from './styles';
 
-const TaskForm = () => {
+const TodoForm = () => {
   const { addTask, clearList, editTask, editItem } = useContext( TaskListContext )
   const [ title, setTitle ] = useState( '' )
   const [ desc, setDesc ] = useState( '' )
@@ -97,9 +97,11 @@ const TaskForm = () => {
           <ButtonDefault type="submit" >
             { editItem ? 'Salvar alteração' : <AddIcon /> }
           </ButtonDefault>
-          <ButtonDefault onClick={ clearList }>
-            Apagar tarefas
-        </ButtonDefault>
+          { editItem ? '' :
+            <ButtonDefault onClick={ clearList }>
+              Apagar tarefas
+           </ButtonDefault> }
+
 
         </Container>
 
@@ -111,4 +113,4 @@ const TaskForm = () => {
   )
 }
 
-export default TaskForm
+export default TodoForm
