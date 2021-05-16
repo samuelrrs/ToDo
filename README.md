@@ -21,9 +21,9 @@ React JS
 ### 🔧 Instalação
 
 ```
-Clone ou baixe o ZIP do projeto
+Clone ou baixe o ZIP do projeto.
 ```
-Em seguida abra no seu editor de código
+Em seguida abra no seu editor de código.
 ```
 Rode o comando : YARN ou NPM INSTALL
 ```
